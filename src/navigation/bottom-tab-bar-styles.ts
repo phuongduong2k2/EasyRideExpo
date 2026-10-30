@@ -9,6 +9,9 @@ export const HEXAGON_SIZE = 90;
 export const bottomTabBarStyles = StyleSheet.create({
   container: {
     backgroundColor: "transparent",
+    position:'absolute',
+    bottom:0,
+    left:0,
   },
   panel: {
     height: BAR_HEIGHT,

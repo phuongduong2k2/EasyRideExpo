@@ -28,7 +28,7 @@ const BottomTab = () => {
   return (
     <Tab.Navigator
       tabBar={(props) => <CustomTabBar {...props} />}
-      // screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: false }}
     >
       {TABS.map(({ name, component }, index) => (
         <Tab.Screen

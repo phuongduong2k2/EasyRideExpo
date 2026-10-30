@@ -1,5 +1,5 @@
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { Pressable, Text, View } from "react-native";
+import { Dimensions, Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { IconName } from "../assets/icons";
@@ -24,6 +24,8 @@ const TAB_ICONS: Record<keyof BottomTabParamList, TabIcons> = {
   Profile: { outline: "user", fill: "user_fill" },
 };
 
+const {width: SCREEN_WIDTH} = Dimensions.get('window')
+
 const CustomTabBar = ({
   state,
   descriptors,
@@ -32,7 +34,7 @@ const CustomTabBar = ({
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {width: SCREEN_WIDTH}]}>
       <View style={[styles.panel, { paddingBottom: insets.bottom }]}>
         {state.routes.map((route, index) => {
           const name = route.name as keyof BottomTabParamList;

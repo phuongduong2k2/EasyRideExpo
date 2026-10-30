@@ -19,9 +19,7 @@ const Authentication = ({ navigation }: Props) => {
       <SafeAreaView style={styles.safeArea} edges={["top", "bottom"]}>
         <View style={styles.illustrationWrap}>
           <Image
-            // Bundled image assets resolve to a numeric module id at runtime; cast past the
-            // mismatched `ImageSourcePropType` (react-native) vs `ImageSource` (expo-image) typings.
-            source={IMAGES.welcome as number}
+            source={IMAGES.welcome}
             style={styles.illustration}
             contentFit="contain"
           />
