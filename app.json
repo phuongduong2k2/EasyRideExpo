@@ -1,35 +1,47 @@
 {
   "expo": {
-    "name": "Trego",
-    "slug": "Trego",
+    "name": "EasyRide",
+    "slug": "EasyRide",
     "version": "1.0.0",
     "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
-    "scheme": "trego",
+    "scheme": "easyride",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.trego"
+      "bundleIdentifier": "com.easyride"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.trego"
+      "package": "com.easyride"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-asset",
+      [
+        "expo-asset",
+        {
+          "assets": []
+        }
+      ],
       [
         "expo-splash-screen",
         {
           "backgroundColor": "#ffffff",
           "image": "./assets/splash-icon.png"
         }
-      ]
+      ],
+      [
+        "expo-image",
+        {
+          "disableLibdav1d": true
+        }
+      ],
+      "expo-font"
     ]
   }
 }
