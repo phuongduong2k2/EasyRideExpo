@@ -1,3 +1,4 @@
+import arrow_left from "./icons/arrow_left.svg";
 import discount from "./icons/discount.svg";
 import discount_fill from "./icons/discount_fill.svg";
 import gmail from "./icons/gmail.svg";
@@ -7,7 +8,10 @@ import hexagon from "./icons/hexagon.svg";
 import house from "./icons/house.svg";
 import house_fill from "./icons/house_fill.svg";
 import map from "./icons/map.svg";
+import message from "./icons/message.svg";
+import phone from "./icons/phone.svg";
 import search from "./icons/search.svg";
+import small_star from "./icons/small_star.svg";
 import target from "./icons/target.svg";
 import user from "./icons/user.svg";
 import user_fill from "./icons/user_fill.svg";
@@ -28,6 +32,10 @@ export const ICONS = {
   map,
   search,
   target,
+  arrow_left,
+  small_star,
+  phone,
+  message,
 };
 
 export type IconName = keyof typeof ICONS;

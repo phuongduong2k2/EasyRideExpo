@@ -2,18 +2,19 @@ import { NavigatorScreenParams } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type BottomTabParamList = {
-    Home: undefined
-    Favourite: undefined
-    Wallet: undefined
-    Offer: undefined
-    Profile: undefined
-}
+  Home: undefined;
+  Favourite: undefined;
+  Wallet: undefined;
+  Offer: undefined;
+  Profile: undefined;
+};
 
 export type RootStackParamList = {
-    Onboarding: undefined
-    Authentication: undefined
-    BottomTab: NavigatorScreenParams<BottomTabParamList>
-}
+  Onboarding: undefined;
+  Authentication: undefined;
+  BottomTab: NavigatorScreenParams<BottomTabParamList>;
+  Map: undefined;
+};
 
 export type StackNavigationProp<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;

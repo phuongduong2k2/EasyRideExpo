@@ -1,25 +1,20 @@
+import { useNavigation } from "@react-navigation/native";
 import { useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import MapView from "react-native-maps";
-import AppMapView from "../../components/mapview/AppMapView";
-import { useCurrentLocation } from "../../hooks/useCurrentLocation";
+import AppMapView, { AppMapViewRef } from "../../components/mapview/AppMapView";
 import ControlView, { RideMode } from "./ControlView";
 
 const HomeScreen = () => {
-  const mapRef = useRef<MapView>(null);
+  const mapRef = useRef<AppMapViewRef>(null);
+  const navigation = useNavigation();
 
-  const { currentCoordinates } = useCurrentLocation();
   const [rideMode, setRideMode] = useState<RideMode>("transport");
 
   const goToCurrentLocation = () => {
-    mapRef.current?.animateToRegion({
-      latitudeDelta: 0.05,
-      longitudeDelta: 0.05,
-      ...currentCoordinates!,
-    });
+    mapRef.current?.animateToUser();
   };
 
-  const goToSearchScreen = () => {};
+  const goToSearchScreen = () => navigation.navigate("Map");
 
   return (
     <View style={styles.container}>

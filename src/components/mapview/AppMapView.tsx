@@ -1,5 +1,6 @@
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import React, { useCallback, useRef } from "react";
+import { useNavigation } from "@react-navigation/native";
+import React, { useCallback, useImperativeHandle, useRef } from "react";
 import { StyleSheet } from "react-native";
 import MapView, {
   Callout,
@@ -29,11 +30,19 @@ const MAP_PADDING: EdgePadding = {
 };
 
 type Props = {
-  ref: React.RefObject<MapView | null>;
+  ref?: React.RefObject<AppMapViewRef | null>;
+  isViewOnly?: boolean;
 };
 
-const AppMapView = ({ ref }: Props) => {
+export type AppMapViewRef = {
+  animateToUser: () => void;
+};
+
+const AppMapView = ({ ref, isViewOnly = true }: Props) => {
   const bottomSheetRef = useRef<BottomSheetModal>(null);
+  const mapRef = useRef<MapView>(null);
+  const navigation = useNavigation();
+
   const {
     currentCoordinates,
     isStartRouting,
@@ -44,9 +53,14 @@ const AppMapView = ({ ref }: Props) => {
     stopRouting,
   } = useMapView();
 
+  useImperativeHandle(ref, () => ({
+    animateToUser: goToUser,
+  }));
+
   const handleLongPress = (event: LongPressEvent) => {
+    if (isViewOnly) return;
     setSelectedLocation(event.nativeEvent.coordinate);
-    ref.current?.animateToRegion({
+    mapRef?.current?.animateToRegion({
       ...event.nativeEvent.coordinate,
       latitudeDelta: 0.005,
       longitudeDelta: 0.01,
@@ -60,16 +74,32 @@ const AppMapView = ({ ref }: Props) => {
     setSelectedLocation(null);
   }, []);
 
+  const goToUser = () => {
+    if (currentCoordinates) {
+      mapRef?.current?.animateToRegion({
+        ...currentCoordinates,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.01,
+      });
+    }
+  };
+
+  const handleMapReady = () => {
+    bottomSheetRef.current?.present();
+    setTimeout(() => goToUser(), 1000);
+  };
+
   return (
     <>
       <MapView
-        ref={ref}
+        ref={mapRef}
         style={styles.map}
         region={INITIAL_REGION}
         onLongPress={handleLongPress}
         onMarkerPress={handleMarkerPress}
         showsCompass
         mapPadding={MAP_PADDING}
+        onMapReady={handleMapReady}
       >
         <UserMarker />
         {selectedLocation && (
@@ -80,17 +110,20 @@ const AppMapView = ({ ref }: Props) => {
         {polylineCoordinates && (
           <Polyline
             coordinates={polylineCoordinates}
-            strokeColor="#3498db" // Blue route line
+            strokeColor="#3498db"
             strokeWidth={4}
           />
         )}
       </MapView>
-      <BottomSheetLocation
-        ref={bottomSheetRef}
-        selectedLocation={null}
-        // onSelectWaypoint={}
-        onDismiss={clearSelectedLocation}
-      />
+      {!isViewOnly && (
+        <BottomSheetLocation
+          ref={bottomSheetRef}
+          selectedLocation={selectedLocation}
+          onGoToUser={goToUser}
+          onCancel={navigation.goBack}
+          // onSelectWaypoint={}
+        />
+      )}
     </>
   );
 };
