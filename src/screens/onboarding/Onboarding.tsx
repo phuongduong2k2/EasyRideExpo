@@ -6,15 +6,15 @@ import {
   NativeScrollEvent,
   NativeSyntheticEvent,
   Pressable,
+  StyleSheet,
   Text,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { COLORS } from "../../assets/colors";
 import { StackNavigationProp } from "../../navigation/types";
 import { ONBOARDING_SLIDES, OnboardingSlide } from "./onboarding-slides";
-import { onboardingStyles as styles } from "./onboarding-styles";
-import AppIcon from "../../components/AppIcon";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 type Props = StackNavigationProp<"Onboarding">;
@@ -118,3 +118,106 @@ const Onboarding = ({ navigation }: Props) => {
 };
 
 export default Onboarding;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+  },
+  safeArea: {
+    flex: 1,
+  },
+  header: {
+    height: 42,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    paddingHorizontal: 16,
+  },
+  skipText: {
+    fontFamily: "Poppins_400Regular",
+    fontSize: 16,
+    lineHeight: 23,
+    color: COLORS.textSecondary,
+  },
+  slide: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-end",
+    paddingBottom: 48,
+  },
+  illustration: {
+    width: "93%",
+    height: "45%",
+    marginBottom: 32,
+  },
+  textBlock: {
+    alignItems: "center",
+    gap: 12,
+    paddingHorizontal: 28,
+  },
+  title: {
+    fontFamily: "Poppins_500Medium",
+    fontSize: 24,
+    lineHeight: 30,
+    color: COLORS.textPrimary,
+    textAlign: "center",
+  },
+  description: {
+    fontFamily: "Poppins_500Medium",
+    fontSize: 14,
+    lineHeight: 19,
+    color: COLORS.textPlaceholder,
+    textAlign: "center",
+    maxWidth: 280,
+  },
+  footer: {
+    paddingHorizontal: 28,
+    paddingTop: 24,
+    paddingBottom: 16,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  dots: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: COLORS.accentLight,
+  },
+  dotActive: {
+    width: 20,
+    backgroundColor: COLORS.accent,
+  },
+  nextButton: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    backgroundColor: COLORS.accent,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  nextButtonPressed: {
+    opacity: 0.85,
+  },
+  chevronRight: {
+    width: 12,
+    height: 12,
+    borderTopWidth: 2.5,
+    borderRightWidth: 2.5,
+    borderColor: COLORS.textTertiary,
+    transform: [{ rotate: "45deg" }],
+    marginLeft: -2,
+  },
+  goText: {
+    fontFamily: "Poppins_500Medium",
+    fontSize: 20,
+    letterSpacing: 0.3,
+    color: COLORS.textTertiary,
+  },
+});

@@ -1,16 +1,25 @@
 import { Image } from "expo-image";
-import { Pressable, Text, View } from "react-native";
+import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import AppIcon from "../../components/AppIcon";
+import * as Location from "expo-location";
+import { COLORS } from "../../assets/colors";
 import { IMAGES } from "../../assets/images";
+import AppIcon from "../../components/AppIcon";
 import { StackNavigationProp } from "../../navigation/types";
-import { authenticationStyles as styles } from "./authentication-styles";
 
 type Props = StackNavigationProp<"Authentication">;
 
 const Authentication = ({ navigation }: Props) => {
-  const handleGoogleSignIn = () => {
+  const handleGoogleSignIn = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== Location.PermissionStatus.GRANTED) {
+      Alert.alert(
+        "Request permission failed",
+        "Permission to access location was denied",
+      );
+      return;
+    }
     navigation.replace("BottomTab", { screen: "Home" });
   };
 
@@ -49,3 +58,64 @@ const Authentication = ({ navigation }: Props) => {
 };
 
 export default Authentication;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+  },
+  safeArea: {
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  illustrationWrap: {
+    alignItems: "center",
+    marginTop: 48,
+  },
+  illustration: {
+    width: "91%",
+    height: 220,
+  },
+  textBlock: {
+    alignItems: "center",
+    gap: 12,
+    paddingHorizontal: 28,
+  },
+  title: {
+    fontFamily: "Poppins_500Medium",
+    fontSize: 24,
+    lineHeight: 30,
+    color: COLORS.textPrimary,
+    textAlign: "center",
+  },
+  description: {
+    fontFamily: "Poppins_400Regular",
+    fontSize: 16,
+    lineHeight: 24,
+    color: COLORS.textPlaceholder,
+    textAlign: "center",
+    maxWidth: 280,
+  },
+  footer: {
+    paddingHorizontal: 16,
+    paddingBottom: 16,
+  },
+  googleButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    height: 54,
+    borderRadius: 8,
+    backgroundColor: COLORS.primary,
+  },
+  googleButtonPressed: {
+    opacity: 0.85,
+  },
+  googleButtonText: {
+    fontFamily: "Poppins_500Medium",
+    fontSize: 16,
+    lineHeight: 23,
+    color: COLORS.white,
+  },
+});

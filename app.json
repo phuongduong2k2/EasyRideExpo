@@ -41,6 +41,12 @@
           "disableLibdav1d": true
         }
       ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ],
       "expo-font"
     ]
   }

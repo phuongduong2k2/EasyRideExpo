@@ -1,15 +1,13 @@
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { Dimensions, Pressable, Text, View } from "react-native";
+import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { COLORS } from "../assets/colors";
 import { IconName } from "../assets/icons";
 import AppIcon from "../components/AppIcon";
-import {
-  ACTIVE_COLOR,
-  INACTIVE_COLOR,
-  bottomTabBarStyles as styles,
-} from "./bottom-tab-bar-styles";
 import { BottomTabParamList } from "./types";
+
+export const HEXAGON_SIZE = 90;
 
 type TabIcons = {
   outline: IconName;
@@ -24,7 +22,7 @@ const TAB_ICONS: Record<keyof BottomTabParamList, TabIcons> = {
   Profile: { outline: "user", fill: "user_fill" },
 };
 
-const {width: SCREEN_WIDTH} = Dimensions.get('window')
+const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 const CustomTabBar = ({
   state,
@@ -34,7 +32,7 @@ const CustomTabBar = ({
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={[styles.container, {width: SCREEN_WIDTH}]}>
+    <View style={[styles.container, { width: SCREEN_WIDTH }]}>
       <View style={[styles.panel, { paddingBottom: insets.bottom }]}>
         {state.routes.map((route, index) => {
           const name = route.name as keyof BottomTabParamList;
@@ -69,14 +67,14 @@ const CustomTabBar = ({
                   <View style={styles.walletHexagon}>
                     <AppIcon name="hexagon" />
                     <View style={{ position: "absolute" }}>
-                      <AppIcon name={icons.outline}/>
+                      <AppIcon name={icons.outline} />
                     </View>
                   </View>
                 </View>
                 <Text
                   style={[
                     styles.walletLabel,
-                    { color: isFocused ? ACTIVE_COLOR : INACTIVE_COLOR },
+                    { color: isFocused ? COLORS.accent : COLORS.textSecondary },
                   ]}
                 >
                   {label}
@@ -99,7 +97,7 @@ const CustomTabBar = ({
               <Text
                 style={[
                   styles.tabLabel,
-                  { color: isFocused ? ACTIVE_COLOR : INACTIVE_COLOR },
+                  { color: isFocused ? COLORS.accent : COLORS.textSecondary },
                 ]}
               >
                 {label}
@@ -113,3 +111,49 @@ const CustomTabBar = ({
 };
 
 export default CustomTabBar;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "transparent",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+  },
+  panel: {
+    backgroundColor: COLORS.white,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+    flexDirection: "row",
+    alignItems: "flex-start",
+    paddingTop: 23,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: 4,
+  },
+  tabLabel: {
+    fontFamily: "Poppins_500Medium",
+    fontSize: 12,
+    lineHeight: 18,
+  },
+  walletTabItem: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: 4,
+  },
+  walletHexagon: {
+    top: -HEXAGON_SIZE / 2 - 24,
+    width: HEXAGON_SIZE,
+    height: HEXAGON_SIZE,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  walletLabel: {
+    fontFamily: "Poppins_500Medium",
+    fontSize: 12,
+    lineHeight: 18,
+  },
+});

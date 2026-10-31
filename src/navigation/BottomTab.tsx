@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 
+import FavouriteTab from "../screens/tabs/FavouriteTab";
+import HomeTab from "../screens/tabs/HomeTab";
+import OfferTab from "../screens/tabs/OfferTab";
+import ProfileTab from "../screens/tabs/ProfileTab";
+import WalletTab from "../screens/tabs/WalletTab";
 import CustomTabBar from "./CustomTabBar";
-import FavouriteTab from "./tabs/FavouriteTab";
-import HomeTab from "./tabs/HomeTab";
-import OfferTab from "./tabs/OfferTab";
-import ProfileTab from "./tabs/ProfileTab";
-import WalletTab from "./tabs/WalletTab";
 import { BottomTabParamList } from "./types";
 
 type TabConfig = {
