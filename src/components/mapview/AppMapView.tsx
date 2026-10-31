@@ -1,7 +1,7 @@
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { useNavigation } from "@react-navigation/native";
-import React, { useCallback, useImperativeHandle, useRef } from "react";
-import { StyleSheet } from "react-native";
+import React, { useEffect, useImperativeHandle, useRef } from "react";
+import { Pressable, StyleSheet, Text } from "react-native";
 import MapView, {
   Callout,
   EdgePadding,
@@ -12,7 +12,7 @@ import MapView, {
   Region,
 } from "react-native-maps";
 import { useMapView } from "../../hooks/useMapView";
-import BottomSheetLocation from "./BottomSheetLocation";
+import BottomSheetLocation from "./BottomSheetLocation/BottomSheetLocation";
 import UserMarker from "./UserMarker";
 
 const INITIAL_REGION: Region = {
@@ -45,12 +45,10 @@ const AppMapView = ({ ref, isViewOnly = true }: Props) => {
 
   const {
     currentCoordinates,
-    isStartRouting,
     polylineCoordinates,
     selectedLocation,
     setSelectedLocation,
-    startRouting,
-    stopRouting,
+    routingQuery,
   } = useMapView();
 
   useImperativeHandle(ref, () => ({
@@ -70,10 +68,6 @@ const AppMapView = ({ ref, isViewOnly = true }: Props) => {
 
   const handleMarkerPress = (event: MarkerPressEvent) => {};
 
-  const clearSelectedLocation = useCallback(() => {
-    setSelectedLocation(null);
-  }, []);
-
   const goToUser = () => {
     if (currentCoordinates) {
       mapRef?.current?.animateToRegion({
@@ -88,6 +82,15 @@ const AppMapView = ({ ref, isViewOnly = true }: Props) => {
     bottomSheetRef.current?.present();
     setTimeout(() => goToUser(), 1000);
   };
+
+  useEffect(() => {
+    if (polylineCoordinates) {
+      mapRef.current?.fitToCoordinates(polylineCoordinates, {
+        edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+        animated: true,
+      });
+    }
+  }, [polylineCoordinates]);
 
   return (
     <>
@@ -115,13 +118,25 @@ const AppMapView = ({ ref, isViewOnly = true }: Props) => {
           />
         )}
       </MapView>
+      <Pressable
+        style={{ position: "absolute", zIndex: 100, top: 200 }}
+        onPress={() =>
+          console.log({
+            selectedLocation,
+            currentCoordinates,
+            polylineCoordinates,
+          })
+        }
+      >
+        <Text>dasdasd</Text>
+      </Pressable>
       {!isViewOnly && (
         <BottomSheetLocation
           ref={bottomSheetRef}
           selectedLocation={selectedLocation}
           onGoToUser={goToUser}
           onCancel={navigation.goBack}
-          // onSelectWaypoint={}
+          onBookNow={() => routingQuery.refetch()}
         />
       )}
     </>

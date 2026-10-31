@@ -1,55 +1,39 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LatLng } from "react-native-maps";
 import { geoapifyService } from "../services/geoapify/GeoapifyService";
 import { useCurrentLocation } from "./useCurrentLocation";
 
 export const useMapView = () => {
   const [selectedLocation, setSelectedLocation] = useState<LatLng | null>(null);
-  const [isStartRouting, setIsStartRouting] = useState(false);
   const { currentCoordinates } = useCurrentLocation();
-  const [polylineCoordinates, setPolylineCoordinates] = useState<LatLng[]>([]);
 
   const routingQuery = useQuery({
-    queryKey: ["routing"],
+    queryKey: [
+      "routing",
+      selectedLocation?.latitude,
+      selectedLocation?.longitude,
+      currentCoordinates?.latitude,
+      currentCoordinates?.longitude,
+    ],
     queryFn: () =>
       geoapifyService.getRouting({
         from: selectedLocation!,
         to: currentCoordinates!,
       }),
-    enabled: !!selectedLocation && !!currentCoordinates && isStartRouting,
+    enabled: false,
   });
-
-  const rawCoordinates =
-    routingQuery.data && routingQuery.data?.features[0].geometry.coordinates[0];
-
-  useEffect(() => {
-    if (rawCoordinates) {
-      setPolylineCoordinates(
-        rawCoordinates.map((coord) => ({
-          latitude: coord[1],
-          longitude: coord[0],
-        })),
-      );
-    } else setPolylineCoordinates([]);
-  }, [rawCoordinates]);
-
-  const startRouting = () => {
-    setIsStartRouting(true);
-  };
-
-  const stopRouting = () => {
-    setIsStartRouting(false);
-    setPolylineCoordinates([]);
-  };
 
   return {
     selectedLocation,
-    isStartRouting,
+    routingQuery,
     currentCoordinates,
     setSelectedLocation,
-    polylineCoordinates,
-    startRouting,
-    stopRouting,
+    polylineCoordinates: routingQuery.data?.features[0].geometry.coordinates
+      .flat()
+      .map((coord) => ({
+        latitude: coord[1],
+        longitude: coord[0],
+      })),
   };
 };

@@ -6,7 +6,7 @@ import {
   RoutingResponse,
 } from "./types";
 
-const GEOAPIFY_BASE_URL = "https://api.geoapify.com/v1/geocode";
+const GEOAPIFY_BASE_URL = "https://api.geoapify.com/v1";
 
 class GeoapifyService extends ApiService {
   private readonly apiKey = process.env.EXPO_PUBLIC_GEOAPIFY_API_KEY;
@@ -16,7 +16,7 @@ class GeoapifyService extends ApiService {
 
   public getReverseGeocoding({ latitude, longitude }: LatLng) {
     return this.get<ReverseGeocodingResponse>({
-      endpoint: "/reverse",
+      endpoint: "/geocode/reverse",
       params: {
         lat: latitude,
         lon: longitude,
@@ -34,6 +34,8 @@ class GeoapifyService extends ApiService {
       endpoint: "/routing",
       params: {
         waypoints,
+        mode: "drive",
+        apiKey: this.apiKey,
       },
     });
   }
