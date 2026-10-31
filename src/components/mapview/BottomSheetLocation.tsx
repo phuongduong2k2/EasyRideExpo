@@ -19,6 +19,7 @@ import { COLORS } from "../../assets/colors";
 import { IMAGES } from "../../assets/images";
 import { geoapifyService } from "../../services/geoapify/GeoapifyService";
 import { getRandomArbitrary } from "../../utils/utils";
+import AppButton from "../AppButton";
 import AppIcon from "../AppIcon";
 import BreakLine from "../BreakLine";
 
@@ -219,6 +220,7 @@ const BottomSheetLocation = ({
   const insets = useSafeAreaInsets();
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
   const [driver, setDriver] = useState<Driver | null>(null);
+  const [isFetchingDriver, setIsFetchingDriver] = useState(false);
 
   const handleFetchData = async () => {
     if (!selectedLocation) return;
@@ -338,9 +340,10 @@ const BottomSheetLocation = ({
                 justifyContent: "center",
               }}
             >
-              <TouchableOpacity
-                disabled={!selectedCar}
+              <AppButton
+                disabled={!selectedCar || isFetchingDriver}
                 onPress={async () => {
+                  setIsFetchingDriver(true);
                   try {
                     const randomDriverRes = await fetchAsync(
                       "https://randomuser.me/api",
@@ -351,22 +354,16 @@ const BottomSheetLocation = ({
                   } catch (error) {
                     clear();
                   }
+                  setIsFetchingDriver(false);
                 }}
-                style={{
-                  backgroundColor: COLORS.primary,
-                  paddingVertical: 20,
-                  width: "100%",
-                  borderRadius: 100,
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
+                isLoading={isFetchingDriver}
               >
                 <Text
                   style={{ color: "white", fontSize: 20, fontWeight: "600" }}
                 >
                   Book Now
                 </Text>
-              </TouchableOpacity>
+              </AppButton>
             </View>
           </View>
         );
