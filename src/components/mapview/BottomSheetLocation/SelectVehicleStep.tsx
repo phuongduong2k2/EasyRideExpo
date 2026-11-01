@@ -11,7 +11,8 @@ import { EdgeInsets } from "react-native-safe-area-context";
 import { COLORS } from "../../../assets/colors";
 import AppButton from "../../AppButton";
 import AppIcon from "../../AppIcon";
-import { CARS } from "./mock-data";
+
+import { CARS } from "../../../constants";
 import { Car } from "./types";
 
 const heightScreen = Dimensions.get("window").height;
@@ -34,7 +35,9 @@ const SelectVehicleStep = ({
   onBookNow,
 }: Props) => {
   return (
-    <View style={[styles.container, { height: heightScreen * 0.5 - insets.top }]}>
+    <View
+      style={[styles.container, { height: heightScreen * 0.5 - insets.top }]}
+    >
       <FlatList
         data={CARS}
         showsVerticalScrollIndicator={false}
