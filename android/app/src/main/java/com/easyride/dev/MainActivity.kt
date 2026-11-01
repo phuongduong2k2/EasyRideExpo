@@ -1,4 +1,4 @@
-package com.easyride
+package com.easyride.dev
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

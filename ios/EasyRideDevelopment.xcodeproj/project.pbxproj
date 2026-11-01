@@ -9,29 +9,29 @@
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		848F4FABF12750AF502D5C82 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404F8CBC2F8B2878C25A6F52 /* ExpoModulesProvider.swift */; };
-		8F4D99987BBCFBA1C4380197 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 9379D3CDA0C298D7C2B63002 /* PrivacyInfo.xcprivacy */; };
+		4D8D5F0AF37E37F334F163EA /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA878A9ED003A3B1F6579B7 /* ExpoModulesProvider.swift */; };
+		860AAB73D56317195DA80FD0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C52411269BD0B92210B5FBCE /* PrivacyInfo.xcprivacy */; };
+		9CAD014741BD29B9E5E0D42E /* libPods-EasyRideDevelopment.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD800A01C5DBED1B2DA6A88 /* libPods-EasyRideDevelopment.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 		F11748442D0307B40044C1D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748432D0307B40044C1D9 /* SceneDelegate.swift */; };
-		F40E3E705CF8D561EA2BAB6C /* libPods-EasyRide.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8200D2ECF44F2652CA3264 /* libPods-EasyRide.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		13B07F961A680F5B00A75B9A /* EasyRide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyRide.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = EasyRide/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = EasyRide/Info.plist; sourceTree = "<group>"; };
-		24248434D448C6EDEA4AB734 /* Pods-EasyRide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyRide.debug.xcconfig"; path = "Target Support Files/Pods-EasyRide/Pods-EasyRide.debug.xcconfig"; sourceTree = "<group>"; };
-		2E8200D2ECF44F2652CA3264 /* libPods-EasyRide.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyRide.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		404F8CBC2F8B2878C25A6F52 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-EasyRide/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		84CE2182D1ABC35C598B5661 /* Pods-EasyRide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyRide.release.xcconfig"; path = "Target Support Files/Pods-EasyRide/Pods-EasyRide.release.xcconfig"; sourceTree = "<group>"; };
-		9379D3CDA0C298D7C2B63002 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = EasyRide/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = EasyRide/SplashScreen.storyboard; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* EasyRideDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyRideDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = EasyRideDevelopment/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = EasyRideDevelopment/Info.plist; sourceTree = "<group>"; };
+		3FA878A9ED003A3B1F6579B7 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-EasyRideDevelopment/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = EasyRideDevelopment/SplashScreen.storyboard; sourceTree = "<group>"; };
+		BAD800A01C5DBED1B2DA6A88 /* libPods-EasyRideDevelopment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyRideDevelopment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		C52411269BD0B92210B5FBCE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = EasyRideDevelopment/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = EasyRide/AppDelegate.swift; sourceTree = "<group>"; };
-		F11748432D0307B40044C1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = EasyRide/SceneDelegate.swift; sourceTree = "<group>"; };
-		F11748442D0722820044C1D9 /* EasyRide-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "EasyRide-Bridging-Header.h"; path = "EasyRide/EasyRide-Bridging-Header.h"; sourceTree = "<group>"; };
+		EE979B9D272C1D4F079AF1C8 /* Pods-EasyRideDevelopment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyRideDevelopment.release.xcconfig"; path = "Target Support Files/Pods-EasyRideDevelopment/Pods-EasyRideDevelopment.release.xcconfig"; sourceTree = "<group>"; };
+		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = EasyRideDevelopment/AppDelegate.swift; sourceTree = "<group>"; };
+		F11748432D0307B40044C1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = EasyRideDevelopment/SceneDelegate.swift; sourceTree = "<group>"; };
+		F11748442D0722820044C1D9 /* EasyRideDevelopment-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "EasyRideDevelopment-Bridging-Header.h"; path = "EasyRideDevelopment/EasyRideDevelopment-Bridging-Header.h"; sourceTree = "<group>"; };
+		FBCEF2B7F3FF99BCF8D52041 /* Pods-EasyRideDevelopment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyRideDevelopment.debug.xcconfig"; path = "Target Support Files/Pods-EasyRideDevelopment/Pods-EasyRideDevelopment.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,41 +39,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F40E3E705CF8D561EA2BAB6C /* libPods-EasyRide.a in Frameworks */,
+				9CAD014741BD29B9E5E0D42E /* libPods-EasyRideDevelopment.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09C309CA0CA268ED8909F86A /* EasyRide */ = {
-			isa = PBXGroup;
-			children = (
-				404F8CBC2F8B2878C25A6F52 /* ExpoModulesProvider.swift */,
-			);
-			name = EasyRide;
-			sourceTree = "<group>";
-		};
-		13B07FAE1A68108700A75B9A /* EasyRide */ = {
+		13B07FAE1A68108700A75B9A /* EasyRideDevelopment */ = {
 			isa = PBXGroup;
 			children = (
 				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
 				F11748432D0307B40044C1D9 /* SceneDelegate.swift */,
-				F11748442D0722820044C1D9 /* EasyRide-Bridging-Header.h */,
+				F11748442D0722820044C1D9 /* EasyRideDevelopment-Bridging-Header.h */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				9379D3CDA0C298D7C2B63002 /* PrivacyInfo.xcprivacy */,
+				C52411269BD0B92210B5FBCE /* PrivacyInfo.xcprivacy */,
 			);
-			name = EasyRide;
+			name = EasyRideDevelopment;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				2E8200D2ECF44F2652CA3264 /* libPods-EasyRide.a */,
+				BAD800A01C5DBED1B2DA6A88 /* libPods-EasyRideDevelopment.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -88,12 +80,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* EasyRide */,
+				13B07FAE1A68108700A75B9A /* EasyRideDevelopment */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				9A6807ADA79ABBE77B0C5906 /* Pods */,
-				8CF7754CED8CB47406AFFE1C /* ExpoModulesProviders */,
+				B5A054D56C92A253A6766645 /* Pods */,
+				D2E6712C2E345CC3A51098BC /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -103,24 +95,24 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* EasyRide.app */,
+				13B07F961A680F5B00A75B9A /* EasyRideDevelopment.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8CF7754CED8CB47406AFFE1C /* ExpoModulesProviders */ = {
+		9F51868AA63A340C9ADBA3E1 /* EasyRideDevelopment */ = {
 			isa = PBXGroup;
 			children = (
-				09C309CA0CA268ED8909F86A /* EasyRide */,
+				3FA878A9ED003A3B1F6579B7 /* ExpoModulesProvider.swift */,
 			);
-			name = ExpoModulesProviders;
+			name = EasyRideDevelopment;
 			sourceTree = "<group>";
 		};
-		9A6807ADA79ABBE77B0C5906 /* Pods */ = {
+		B5A054D56C92A253A6766645 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				24248434D448C6EDEA4AB734 /* Pods-EasyRide.debug.xcconfig */,
-				84CE2182D1ABC35C598B5661 /* Pods-EasyRide.release.xcconfig */,
+				FBCEF2B7F3FF99BCF8D52041 /* Pods-EasyRideDevelopment.debug.xcconfig */,
+				EE979B9D272C1D4F079AF1C8 /* Pods-EasyRideDevelopment.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -132,33 +124,41 @@
 				BB2F792C24A3F905000567C9 /* Expo.plist */,
 			);
 			name = Supporting;
-			path = EasyRide/Supporting;
+			path = EasyRideDevelopment/Supporting;
+			sourceTree = "<group>";
+		};
+		D2E6712C2E345CC3A51098BC /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				9F51868AA63A340C9ADBA3E1 /* EasyRideDevelopment */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* EasyRide */ = {
+		13B07F861A680F5B00A75B9A /* EasyRideDevelopment */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "EasyRide" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "EasyRideDevelopment" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				B5EB228F55A69517C894D317 /* [Expo] Configure project */,
+				FE9F8ACBBE7C69A69F03F79B /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				CD0174608FD6445CB1392E29 /* [Expo Dev Launcher] Strip Local Network Keys for Release */,
-				281FABB348968EF0B17BBE5F /* [CP] Embed Pods Frameworks */,
+				4F588B619FE4440A8980544E /* [Expo Dev Launcher] Strip Local Network Keys for Release */,
+				4C3D8B5A852584FE357E681E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = EasyRide;
-			productName = EasyRide;
-			productReference = 13B07F961A680F5B00A75B9A /* EasyRide.app */;
+			name = EasyRideDevelopment;
+			productName = EasyRideDevelopment;
+			productReference = 13B07F961A680F5B00A75B9A /* EasyRideDevelopment.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -174,7 +174,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "EasyRide" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "EasyRideDevelopment" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -187,7 +187,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* EasyRide */,
+				13B07F861A680F5B00A75B9A /* EasyRideDevelopment */,
 			);
 		};
 /* End PBXProject section */
@@ -200,7 +200,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				8F4D99987BBCFBA1C4380197 /* PrivacyInfo.xcprivacy in Resources */,
+				860AAB73D56317195DA80FD0 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,20 +239,20 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EasyRide-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-EasyRideDevelopment-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		281FABB348968EF0B17BBE5F /* [CP] Embed Pods Frameworks */ = {
+		4C3D8B5A852584FE357E681E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EasyRide/Pods-EasyRide-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-EasyRideDevelopment/Pods-EasyRideDevelopment-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem.framework/ExpoFileSystem",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoFont/ExpoFont.framework/ExpoFont",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoImage/ExpoImage.framework/ExpoImage",
@@ -287,8 +287,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyRide/Pods-EasyRide-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyRideDevelopment/Pods-EasyRideDevelopment-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4F588B619FE4440A8980544E /* [Expo Dev Launcher] Strip Local Network Keys for Release */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo Dev Launcher] Strip Local Network Keys for Release";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Strip dev-launcher-specific local network permission keys from release builds.\n# This only removes _expo._tcp Bonjour services and the dev-launcher usage description.\n# Other Bonjour services and custom descriptions are preserved for production use.\n#\n# Detect debug builds via the DEBUG compile condition rather than the configuration name,\n# so custom debug configurations (e.g. \"Dev\", \"Staging\") that define DEBUG keep the keys.\ncase \" $SWIFT_ACTIVE_COMPILATION_CONDITIONS \" in\n  *\" DEBUG \"*) IS_DEBUG_BUILD=1 ;;\n  *) IS_DEBUG_BUILD=0 ;;\nesac\n\nif [ \"$IS_DEBUG_BUILD\" != \"1\" ]; then\n  PLIST_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n  if [ -f \"$PLIST_PATH\" ]; then\n    # Check if NSBonjourServices exists\n    if /usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" >/dev/null 2>&1; then\n      # Get the count of services\n      COUNT=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n\n      # Remove _expo._tcp\n      for ((i=COUNT-1; i>=0; i--)); do\n        SERVICE=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n        if echo \"$SERVICE\" | grep -q \"_expo._tcp\"; then\n          /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || true\n        fi\n      done\n\n      # If the array is now empty, remove it entirely\n      REMAINING=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n      if [ \"$REMAINING\" -eq \"0\" ]; then\n        /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null || true\n      fi\n    fi\n\n    # Only delete the description if it matches the dev-launcher default text\n    DESC=$(/usr/libexec/PlistBuddy -c \"Print :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n    if echo \"$DESC\" | grep -q \"Expo Dev Launcher\"; then\n      /usr/libexec/PlistBuddy -c \"Delete :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || true\n    fi\n  fi\nfi\n";
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -296,7 +310,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EasyRide/Pods-EasyRide-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-EasyRideDevelopment/Pods-EasyRideDevelopment-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
@@ -321,10 +335,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyRide/Pods-EasyRide-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyRideDevelopment/Pods-EasyRideDevelopment-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B5EB228F55A69517C894D317 /* [Expo] Configure project */ = {
+		FE9F8ACBBE7C69A69F03F79B /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -335,32 +349,18 @@
 			inputPaths = (
 				"$(SRCROOT)/.xcode.env",
 				"$(SRCROOT)/.xcode.env.local",
-				"$(SRCROOT)/EasyRide/EasyRide.entitlements",
-				"$(SRCROOT)/Pods/Target Support Files/Pods-EasyRide/expo-configure-project.sh",
+				"$(SRCROOT)/EasyRideDevelopment/EasyRideDevelopment.entitlements",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-EasyRideDevelopment/expo-configure-project.sh",
 			);
 			name = "[Expo] Configure project";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/Pods/Target Support Files/Pods-EasyRide/ExpoModulesProvider.swift",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-EasyRideDevelopment/ExpoModulesProvider.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-EasyRide/expo-configure-project.sh\"\n";
-		};
-		CD0174608FD6445CB1392E29 /* [Expo Dev Launcher] Strip Local Network Keys for Release */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo Dev Launcher] Strip Local Network Keys for Release";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Strip dev-launcher-specific local network permission keys from release builds.\n# This only removes _expo._tcp Bonjour services and the dev-launcher usage description.\n# Other Bonjour services and custom descriptions are preserved for production use.\n#\n# Detect debug builds via the DEBUG compile condition rather than the configuration name,\n# so custom debug configurations (e.g. \"Dev\", \"Staging\") that define DEBUG keep the keys.\ncase \" $SWIFT_ACTIVE_COMPILATION_CONDITIONS \" in\n  *\" DEBUG \"*) IS_DEBUG_BUILD=1 ;;\n  *) IS_DEBUG_BUILD=0 ;;\nesac\n\nif [ \"$IS_DEBUG_BUILD\" != \"1\" ]; then\n  PLIST_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n  if [ -f \"$PLIST_PATH\" ]; then\n    # Check if NSBonjourServices exists\n    if /usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" >/dev/null 2>&1; then\n      # Get the count of services\n      COUNT=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n\n      # Remove _expo._tcp\n      for ((i=COUNT-1; i>=0; i--)); do\n        SERVICE=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n        if echo \"$SERVICE\" | grep -q \"_expo._tcp\"; then\n          /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || true\n        fi\n      done\n\n      # If the array is now empty, remove it entirely\n      REMAINING=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n      if [ \"$REMAINING\" -eq \"0\" ]; then\n        /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null || true\n      fi\n    fi\n\n    # Only delete the description if it matches the dev-launcher default text\n    DESC=$(/usr/libexec/PlistBuddy -c \"Print :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n    if echo \"$DESC\" | grep -q \"Expo Dev Launcher\"; then\n      /usr/libexec/PlistBuddy -c \"Delete :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || true\n    fi\n  fi\nfi\n";
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-EasyRideDevelopment/expo-configure-project.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -371,7 +371,7 @@
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
 				F11748442D0307B40044C1D9 /* SceneDelegate.swift in Sources */,
-				848F4FABF12750AF502D5C82 /* ExpoModulesProvider.swift in Sources */,
+				4D8D5F0AF37E37F334F163EA /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,18 +380,18 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24248434D448C6EDEA4AB734 /* Pods-EasyRide.debug.xcconfig */;
+			baseConfigurationReference = FBCEF2B7F3FF99BCF8D52041 /* Pods-EasyRideDevelopment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = EasyRide/EasyRide.entitlements;
+				CODE_SIGN_ENTITLEMENTS = EasyRideDevelopment/EasyRideDevelopment.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = EasyRide/Info.plist;
+				INFOPLIST_FILE = EasyRideDevelopment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -405,9 +405,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.easyride;
-				PRODUCT_NAME = EasyRide;
-				SWIFT_OBJC_BRIDGING_HEADER = "EasyRide/EasyRide-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.easyride.dev;
+				PRODUCT_NAME = EasyRideDevelopment;
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyRideDevelopment/EasyRideDevelopment-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -417,13 +417,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84CE2182D1ABC35C598B5661 /* Pods-EasyRide.release.xcconfig */;
+			baseConfigurationReference = EE979B9D272C1D4F079AF1C8 /* Pods-EasyRideDevelopment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = EasyRide/EasyRide.entitlements;
+				CODE_SIGN_ENTITLEMENTS = EasyRideDevelopment/EasyRideDevelopment.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = EasyRide/Info.plist;
+				INFOPLIST_FILE = EasyRideDevelopment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -437,9 +437,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.easyride;
-				PRODUCT_NAME = EasyRide;
-				SWIFT_OBJC_BRIDGING_HEADER = "EasyRide/EasyRide-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.easyride.dev;
+				PRODUCT_NAME = EasyRideDevelopment;
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyRideDevelopment/EasyRideDevelopment-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -583,7 +583,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "EasyRide" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "EasyRideDevelopment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -592,7 +592,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "EasyRide" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "EasyRideDevelopment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "EasyRide.app"
-               BlueprintName = "EasyRide"
-               ReferencedContainer = "container:EasyRide.xcodeproj">
+               BuildableName = "EasyRideDevelopment.app"
+               BlueprintName = "EasyRideDevelopment"
+               ReferencedContainer = "container:EasyRideDevelopment.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "EasyRideTests.xctest"
-               BlueprintName = "EasyRideTests"
-               ReferencedContainer = "container:EasyRide.xcodeproj">
+               BuildableName = "EasyRideDevelopmentTests.xctest"
+               BlueprintName = "EasyRideDevelopmentTests"
+               ReferencedContainer = "container:EasyRideDevelopment.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "EasyRide.app"
-            BlueprintName = "EasyRide"
-            ReferencedContainer = "container:EasyRide.xcodeproj">
+            BuildableName = "EasyRideDevelopment.app"
+            BlueprintName = "EasyRideDevelopment"
+            ReferencedContainer = "container:EasyRideDevelopment.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "EasyRide.app"
-            BlueprintName = "EasyRide"
-            ReferencedContainer = "container:EasyRide.xcodeproj">
+            BuildableName = "EasyRideDevelopment.app"
+            BlueprintName = "EasyRideDevelopment"
+            ReferencedContainer = "container:EasyRideDevelopment.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

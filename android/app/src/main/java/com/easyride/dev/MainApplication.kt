@@ -1,4 +1,4 @@
-package com.easyride
+package com.easyride.dev
 
 import android.app.Application
 import android.content.res.Configuration
