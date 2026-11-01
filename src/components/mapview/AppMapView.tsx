@@ -1,5 +1,10 @@
-import React, { useEffect, useImperativeHandle, useRef } from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import React, {
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+} from "react";
+import { StyleSheet } from "react-native";
 import MapView, {
   Callout,
   EdgePadding,
@@ -7,10 +12,14 @@ import MapView, {
   LongPressEvent,
   Marker,
   MarkerPressEvent,
-  Polyline,
   Region,
 } from "react-native-maps";
 import { useMapView } from "../../hooks/useMapView";
+
+import { QueryObserverResult } from "@tanstack/react-query";
+import { MapContext } from "../../context/mapContext";
+import { RoutingResponse } from "../../services/geoapify/types";
+import PolylineRouting from "./PolylineRouting";
 import UserMarker from "./UserMarker";
 
 const INITIAL_REGION: Region = {
@@ -30,15 +39,14 @@ const MAP_PADDING: EdgePadding = {
 export type AppMapViewOverlayProps = {
   selectedLocation: LatLng | null;
   onGoToUser: () => void;
-  onBookNow: () => Promise<any>;
+  fetchRouting: () => Promise<any>;
+  fetchDriverRouting: () => Promise<
+    QueryObserverResult<RoutingResponse, Error>
+  >;
 };
 
 type Props = {
   ref?: React.RefObject<AppMapViewRef | null>;
-  /**
-   * Renders screen-specific overlay UI (e.g. a booking bottom sheet) on top
-   * of the map. Omit for a plain, view-only map.
-   */
   renderOverlay?: (props: AppMapViewOverlayProps) => React.ReactNode;
 };
 
@@ -50,17 +58,27 @@ const AppMapView = ({ ref, renderOverlay }: Props) => {
   const mapRef = useRef<MapView>(null);
   const isViewOnly = !renderOverlay;
 
+  const { car, clear } = useContext(MapContext);
+
   const {
     currentCoordinates,
     polylineCoordinates,
     selectedLocation,
     setSelectedLocation,
     routingQuery,
-  } = useMapView();
+    driverRoutingQuery,
+    driverPolylineCoordinates,
+  } = useMapView(car);
 
   useImperativeHandle(ref, () => ({
     animateToUser: goToUser,
   }));
+
+  useEffect(() => {
+    return () => {
+      clear();
+    };
+  }, []);
 
   const handleLongPress = (event: LongPressEvent) => {
     if (isViewOnly) return;
@@ -97,6 +115,18 @@ const AppMapView = ({ ref, renderOverlay }: Props) => {
     }
   }, [polylineCoordinates]);
 
+  useEffect(() => {
+    if (driverPolylineCoordinates) {
+      mapRef.current?.fitToCoordinates(
+        polylineCoordinates?.concat(driverPolylineCoordinates),
+        {
+          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+          animated: true,
+        },
+      );
+    }
+  }, [driverPolylineCoordinates, polylineCoordinates]);
+
   return (
     <>
       <MapView
@@ -115,30 +145,17 @@ const AppMapView = ({ ref, renderOverlay }: Props) => {
             <Callout tooltip />
           </Marker>
         )}
-        {polylineCoordinates && (
-          <Polyline
-            coordinates={polylineCoordinates}
-            strokeColor="#3498db"
-            strokeWidth={4}
-          />
-        )}
+        <PolylineRouting
+          car={car}
+          polylineCoordinates={polylineCoordinates}
+          driverPolylineCoordinates={driverPolylineCoordinates}
+        />
       </MapView>
-      <Pressable
-        style={{ position: "absolute", zIndex: 100, top: 200 }}
-        onPress={() =>
-          console.log({
-            selectedLocation,
-            currentCoordinates,
-            polylineCoordinates,
-          })
-        }
-      >
-        <Text>dasdasd</Text>
-      </Pressable>
       {renderOverlay?.({
         selectedLocation,
         onGoToUser: goToUser,
-        onBookNow: () => routingQuery.refetch(),
+        fetchRouting: () => routingQuery.refetch(),
+        fetchDriverRouting: () => driverRoutingQuery.refetch(),
       })}
     </>
   );

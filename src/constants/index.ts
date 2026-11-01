@@ -9,6 +9,8 @@ export const CARS: Car[] = [
     price: "100$",
     description: "100m (15mins away)",
     type: ["Automatic", "3 seats", "Octane"],
+    coordinates: { latitude: 21.022855, longitude: 105.769692 },
+    carIcon: "car",
   },
   {
     key: "2",
@@ -17,6 +19,8 @@ export const CARS: Car[] = [
     price: "150$",
     description: "200m (5mins away)",
     type: ["Automatic", "3 seats", "Octane"],
+    coordinates: { latitude: 21.006977, longitude: 105.762364 },
+    carIcon: "car1",
   },
   {
     key: "3",
@@ -25,6 +29,8 @@ export const CARS: Car[] = [
     price: "300$",
     description: "600m (7mins away)",
     type: ["Automatic", "3 seats", "Octane"],
+    coordinates: { latitude: 21.036745, longitude: 105.749587 },
+    carIcon: "car2",
   },
   {
     key: "4",
@@ -33,6 +39,8 @@ export const CARS: Car[] = [
     price: "500$",
     description: "400m (10mins away)",
     type: ["Automatic", "3 seats", "Octane"],
+    coordinates: { latitude: 21.055116, longitude: 105.777475 },
+    carIcon: "car3",
   },
   {
     key: "5",
@@ -41,6 +49,8 @@ export const CARS: Car[] = [
     price: "150$",
     description: "50m (2mins away)",
     type: ["Automatic", "3 seats", "Octane"],
+    coordinates: { latitude: 21.062731, longitude: 105.797966 },
+    carIcon: "car1",
   },
   {
     key: "6",
@@ -49,6 +59,8 @@ export const CARS: Car[] = [
     price: "300$",
     description: "90m (12mins away)",
     type: ["Automatic", "3 seats", "Octane"],
+    coordinates: { latitude: 21.016516, longitude: 105.739102 },
+    carIcon: "car2",
   },
   {
     key: "7",
@@ -57,5 +69,7 @@ export const CARS: Car[] = [
     price: "500$",
     description: "120m (34mins away)",
     type: ["Automatic", "3 seats", "Octane"],
+    coordinates: { latitude: 21.051639, longitude: 105.735902 },
+    carIcon: "car3",
   },
 ];

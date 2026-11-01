@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 220" width="200" height="440">
+  <!-- Bánh xe -->
+  <rect x="4" y="30" width="12" height="35" rx="3" fill="#222" />
+  <rect x="84" y="30" width="12" height="35" rx="3" fill="#222" />
+  <rect x="4" y="150" width="12" height="35" rx="3" fill="#222" />
+  <rect x="84" y="150" width="12" height="35" rx="3" fill="#222" />
+  <!-- Thân xe bo tròn -->
+  <path d="M 20 10 L 80 10 Q 95 60 90 200 Q 50 210 10 200 Q 5 60 20 10 Z" fill="#888c8d" />
+  <!-- Kính chắn gió -->
+  <path d="M 18 90 Q 50 80 82 90 L 78 100 L 22 100 Z" fill="#111" />
+  <!-- Nội thất mui trần -->
+  <rect x="18" y="100" width="64" height="45" fill="#222" />
+  <rect x="25" y="110" width="18" height="25" rx="4" fill="#444" />
+  <rect x="57" y="110" width="18" height="25" rx="4" fill="#444" />
+</svg>

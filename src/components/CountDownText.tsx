@@ -1,46 +1,45 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Text } from "react-native";
 
 type Props = {
   minutes?: number;
   onDone?: () => void;
 };
-let x: any = null;
+
+const pad = (value: number) => value.toString().padStart(2, "0");
 
 const CountDownText = ({ minutes = 5, onDone }: Props) => {
   const [time, setTime] = useState<string>();
-
-  const countDownDate = useMemo(
-    () => Date.now() + minutes * 60 * 1000,
-    [minutes],
-  );
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    x = setInterval(function () {
-      var now = new Date().getTime();
+    // Computed inside the effect (not useMemo) since Date.now() is impure
+    // and must not run during render.
+    const countDownDate = Date.now() + minutes * 60 * 1000;
 
-      var distance = countDownDate - now;
-
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-      );
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      setTime(`${minutes}:${seconds}`);
+    intervalRef.current = setInterval(() => {
+      const now = Date.now();
+      const distance = countDownDate - now;
 
       if (distance < 0) {
-        clearInterval(x);
-        setTime("timeout!");
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        setTime("");
         onDone?.();
+        return;
       }
+
+      const remainingMinutes = Math.floor(
+        (distance % (1000 * 60 * 60)) / (1000 * 60),
+      );
+      const remainingSeconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setTime(`${pad(remainingMinutes)}:${pad(remainingSeconds)}`);
     }, 1000);
 
     return () => {
-      clearInterval(x);
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, []);
+  }, [minutes, onDone]);
 
   return <Text>{time}</Text>;
 };

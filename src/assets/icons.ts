@@ -1,4 +1,8 @@
 import arrow_left from "./icons/arrow_left.svg";
+import car from "./icons/car.svg";
+import car1 from "./icons/car1.svg";
+import car2 from "./icons/car2.svg";
+import car3 from "./icons/car3.svg";
 import discount from "./icons/discount.svg";
 import discount_fill from "./icons/discount_fill.svg";
 import gmail from "./icons/gmail.svg";
@@ -36,6 +40,10 @@ export const ICONS = {
   small_star,
   phone,
   message,
+  car,
+  car1,
+  car2,
+  car3,
 };
 
 export type IconName = keyof typeof ICONS;

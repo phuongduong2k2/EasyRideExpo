@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 220" width="200" height="440">
+  <!-- Bánh xe -->
+  <rect x="3" y="30" width="14" height="35" rx="3" fill="#111" />
+  <rect x="83" y="30" width="14" height="35" rx="3" fill="#111" />
+  <rect x="3" y="150" width="14" height="35" rx="3" fill="#111" />
+  <rect x="83" y="150" width="14" height="35" rx="3" fill="#111" />
+  <!-- Thân xe cơ bắp -->
+  <rect x="10" y="10" width="80" height="200" rx="15" fill="#cc0000" />
+  <!-- Sọc trắng đôi -->
+  <rect x="36" y="10" width="10" height="200" fill="#fff" />
+  <rect x="54" y="10" width="10" height="200" fill="#fff" />
+  <!-- Kính và mui xe -->
+  <path d="M 14 85 Q 50 75 86 85 L 82 145 Q 50 155 18 145 Z" fill="#111" />
+  <rect x="20" y="95" width="60" height="40" fill="#cc0000" />
+  <rect x="36" y="95" width="10" height="40" fill="#fff" />
+  <rect x="54" y="95" width="10" height="40" fill="#fff" />
+</svg>

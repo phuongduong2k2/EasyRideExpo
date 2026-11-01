@@ -1,8 +1,11 @@
 import { ImageSource } from "expo-image";
+import { LatLng } from "react-native-maps";
+import { IconName } from "../../../assets/icons";
 
 export enum Step {
   Waypoint = "waypoint",
   SelectVehicle = "select-vehicle",
+  ConfirmStart = "confirm-start",
   WaitingDriver = "waiting-driver",
 }
 
@@ -13,6 +16,8 @@ export type Car = {
   price: string;
   description: string;
   type: string[];
+  coordinates: LatLng;
+  carIcon: IconName;
 };
 
 export type Driver = {

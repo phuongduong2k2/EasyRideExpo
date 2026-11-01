@@ -1,8 +1,8 @@
 import { BottomSheetModal, BottomSheetView } from "@gorhom/bottom-sheet";
-import { useQuery } from "@tanstack/react-query";
+import { QueryObserverResult, useQuery } from "@tanstack/react-query";
 import { fetchAsync } from "expo/src/async-require/fetchAsync.native.ts";
-import React, { memo, useEffect, useMemo, useRef, useState } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { memo, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { LatLng } from "react-native-maps";
 import Animated, {
   useDerivedValue,
@@ -10,10 +10,14 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { COLORS } from "../../../assets/colors";
-import { geoapifyService } from "../../../services/geoapify/GeoapifyService";
+import AppButton from "../../../components/AppButton";
 import AppIcon from "../../../components/AppIcon";
+import { geoapifyService } from "../../../services/geoapify/GeoapifyService";
+
+import { MapContext } from "../../../context/mapContext";
+import { RoutingResponse } from "../../../services/geoapify/types";
 import SelectVehicleStep from "./SelectVehicleStep";
-import { Car, Driver, Step } from "./types";
+import { Step } from "./types";
 import WaitingDriverStep from "./WaitingDriverStep";
 import WaypointStep, { NoWaypointSelected } from "./WaypointStep";
 
@@ -21,22 +25,27 @@ type Props = {
   selectedLocation: LatLng | null;
   onGoToUser?: () => void;
   onCancel?: () => void;
-  onBookNow?: () => Promise<any>;
+  onBookDriver?: () => Promise<any>;
+  onStart?: () => Promise<QueryObserverResult<RoutingResponse, Error>>;
 };
 
 const BottomSheetLocation = ({
   selectedLocation,
   onGoToUser,
   onCancel,
-  onBookNow,
+  onBookDriver,
+  onStart,
 }: Props) => {
   const ref = useRef<BottomSheetModal>(null);
-  const snapPoints = useMemo(() => ["20%", "40%", "50%"], []);
-  const [step, setStep] = useState<Step>(Step.Waypoint);
   const insets = useSafeAreaInsets();
-  const [selectedCar, setSelectedCar] = useState<Car | null>(null);
-  const [driver, setDriver] = useState<Driver | null>(null);
+
+  const { car, driver, setCar, setDriver, setStep, step } =
+    useContext(MapContext);
+  const snapPoints = useMemo(() => ["20%", "40%", "50%"], []);
+
   const [isFetchingDriver, setIsFetchingDriver] = useState(false);
+  const [isConfirming, setIsConfirming] = useState(false);
+  const [minuteCount, setMinuteCount] = useState<number>(0);
 
   const geocodingQuery = useQuery({
     queryKey: [
@@ -50,7 +59,7 @@ const BottomSheetLocation = ({
 
   const clear = () => {
     setStep(Step.Waypoint);
-    setSelectedCar(null);
+    setCar(null);
     setDriver(null);
   };
 
@@ -64,13 +73,11 @@ const BottomSheetLocation = ({
     try {
       const [randomDriverRes, data] = await Promise.all([
         fetchAsync("https://randomuser.me/api"),
-        onBookNow?.(),
+        onBookDriver?.(),
       ]);
-      console.log(JSON.stringify(data));
-
-      ref?.current?.snapToIndex(1);
+      ref?.current?.snapToIndex(0);
       setDriver(JSON.parse(randomDriverRes.body).results[0]);
-      setStep(Step.WaitingDriver);
+      setStep(Step.ConfirmStart);
     } catch (error) {
       clear();
     }
@@ -96,19 +103,47 @@ const BottomSheetLocation = ({
         return (
           <SelectVehicleStep
             insets={insets}
-            selectedCar={selectedCar}
+            selectedCar={car}
             isFetchingDriver={isFetchingDriver}
-            onSelectCar={setSelectedCar}
+            onSelectCar={setCar}
             onBookNow={handleBookNow}
           />
+        );
+      case Step.ConfirmStart:
+        return (
+          <View>
+            <AppButton
+              isLoading={isConfirming}
+              onPress={async () => {
+                setIsConfirming(true);
+                try {
+                  const respon = await onStart?.();
+                  ref.current?.snapToIndex(1);
+                  const coordinateLength =
+                    respon?.data?.features[0].geometry.coordinates.flat()
+                      .length ?? 0;
+                  if (coordinateLength) {
+                    setMinuteCount(coordinateLength / 60);
+                  }
+                  setStep(Step.WaitingDriver);
+                } catch (error) {
+                  console.log(error);
+                }
+                setIsConfirming(false);
+              }}
+            >
+              <Text>Let's Start</Text>
+            </AppButton>
+          </View>
         );
       case Step.WaitingDriver:
         return (
           driver && (
             <WaitingDriverStep
+              minutes={minuteCount}
               insets={insets}
               driver={driver}
-              selectedCar={selectedCar}
+              selectedCar={car}
               onCancel={onCancel}
             />
           )

@@ -1,4 +1,5 @@
 import { Image } from "expo-image";
+import { useState } from "react";
 import {
   Dimensions,
   StyleSheet,
@@ -8,10 +9,10 @@ import {
 } from "react-native";
 import { EdgeInsets } from "react-native-safe-area-context";
 import { COLORS } from "../../../assets/colors";
-import { getRandomArbitrary } from "../../../utils/utils";
 import AppIcon from "../../../components/AppIcon";
 import BreakLine from "../../../components/BreakLine";
 import CountDownText from "../../../components/CountDownText";
+import { getRandomArbitrary } from "../../../utils/utils";
 import { Car, Driver } from "./types";
 
 const heightScreen = Dimensions.get("window").height;
@@ -21,23 +22,36 @@ type Props = {
   driver: Driver;
   selectedCar: Car | null;
   onCancel?: () => void;
+  minutes: number;
 };
-
-let x: any = null;
 
 const WaitingDriverStep = ({
   insets,
   driver,
   selectedCar,
   onCancel,
+  minutes,
 }: Props) => {
+  const [isArrived, setIsArrived] = useState(false);
+
+  const handleDone = () => {
+    setIsArrived(true);
+  };
+
   return (
     <View
       style={[styles.container, { height: heightScreen * 0.4 - insets.top }]}
     >
-      <Text style={styles.etaText}>
-        Your driver is comming in <CountDownText minutes={4} />
-      </Text>
+      {isArrived ? (
+        <Text style={styles.etaText}>
+          The driver is arrived, please go out!
+        </Text>
+      ) : (
+        <Text style={styles.etaText}>
+          Your driver is coming in{" "}
+          <CountDownText minutes={minutes} onDone={handleDone} />
+        </Text>
+      )}
       <BreakLine />
       <View style={styles.driverRow}>
         <Image
