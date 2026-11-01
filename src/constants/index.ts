@@ -1,5 +1,5 @@
 import { IMAGES } from "../assets/images";
-import { Car } from "../components/mapview/BottomSheetLocation/types";
+import { Car } from "../screens/map/BottomSheetLocation/types";
 
 export const CARS: Car[] = [
   {

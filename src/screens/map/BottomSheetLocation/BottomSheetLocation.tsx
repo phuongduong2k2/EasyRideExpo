@@ -1,7 +1,7 @@
 import { BottomSheetModal, BottomSheetView } from "@gorhom/bottom-sheet";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAsync } from "expo/src/async-require/fetchAsync.native.ts";
-import React, { memo, useEffect, useMemo, useState } from "react";
+import React, { memo, useEffect, useMemo, useRef, useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { LatLng } from "react-native-maps";
 import Animated, {
@@ -11,14 +11,13 @@ import Animated, {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { COLORS } from "../../../assets/colors";
 import { geoapifyService } from "../../../services/geoapify/GeoapifyService";
-import AppIcon from "../../AppIcon";
-import SelectVehicleStep from "./select-vehicle-step";
+import AppIcon from "../../../components/AppIcon";
+import SelectVehicleStep from "./SelectVehicleStep";
 import { Car, Driver, Step } from "./types";
-import WaitingDriverStep from "./waiting-driver-step";
-import WaypointStep, { NoWaypointSelected } from "./waypoint-step";
+import WaitingDriverStep from "./WaitingDriverStep";
+import WaypointStep, { NoWaypointSelected } from "./WaypointStep";
 
 type Props = {
-  ref?: React.RefObject<BottomSheetModal | null>;
   selectedLocation: LatLng | null;
   onGoToUser?: () => void;
   onCancel?: () => void;
@@ -30,8 +29,8 @@ const BottomSheetLocation = ({
   onGoToUser,
   onCancel,
   onBookNow,
-  ref,
 }: Props) => {
+  const ref = useRef<BottomSheetModal>(null);
   const snapPoints = useMemo(() => ["20%", "40%", "50%"], []);
   const [step, setStep] = useState<Step>(Step.Waypoint);
   const insets = useSafeAreaInsets();
@@ -57,6 +56,7 @@ const BottomSheetLocation = ({
 
   useEffect(() => {
     clear();
+    ref?.current?.present();
   }, [selectedLocation]);
 
   const handleBookNow = async () => {

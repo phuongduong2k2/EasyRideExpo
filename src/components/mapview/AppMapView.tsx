@@ -1,10 +1,9 @@
-import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useImperativeHandle, useRef } from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
 import MapView, {
   Callout,
   EdgePadding,
+  LatLng,
   LongPressEvent,
   Marker,
   MarkerPressEvent,
@@ -12,7 +11,6 @@ import MapView, {
   Region,
 } from "react-native-maps";
 import { useMapView } from "../../hooks/useMapView";
-import BottomSheetLocation from "./BottomSheetLocation/BottomSheetLocation";
 import UserMarker from "./UserMarker";
 
 const INITIAL_REGION: Region = {
@@ -29,19 +27,28 @@ const MAP_PADDING: EdgePadding = {
   right: 0,
 };
 
+export type AppMapViewOverlayProps = {
+  selectedLocation: LatLng | null;
+  onGoToUser: () => void;
+  onBookNow: () => Promise<any>;
+};
+
 type Props = {
   ref?: React.RefObject<AppMapViewRef | null>;
-  isViewOnly?: boolean;
+  /**
+   * Renders screen-specific overlay UI (e.g. a booking bottom sheet) on top
+   * of the map. Omit for a plain, view-only map.
+   */
+  renderOverlay?: (props: AppMapViewOverlayProps) => React.ReactNode;
 };
 
 export type AppMapViewRef = {
   animateToUser: () => void;
 };
 
-const AppMapView = ({ ref, isViewOnly = true }: Props) => {
-  const bottomSheetRef = useRef<BottomSheetModal>(null);
+const AppMapView = ({ ref, renderOverlay }: Props) => {
   const mapRef = useRef<MapView>(null);
-  const navigation = useNavigation();
+  const isViewOnly = !renderOverlay;
 
   const {
     currentCoordinates,
@@ -63,7 +70,6 @@ const AppMapView = ({ ref, isViewOnly = true }: Props) => {
       latitudeDelta: 0.005,
       longitudeDelta: 0.01,
     });
-    bottomSheetRef.current?.present();
   };
 
   const handleMarkerPress = (event: MarkerPressEvent) => {};
@@ -79,7 +85,6 @@ const AppMapView = ({ ref, isViewOnly = true }: Props) => {
   };
 
   const handleMapReady = () => {
-    bottomSheetRef.current?.present();
     setTimeout(() => goToUser(), 1000);
   };
 
@@ -130,15 +135,11 @@ const AppMapView = ({ ref, isViewOnly = true }: Props) => {
       >
         <Text>dasdasd</Text>
       </Pressable>
-      {!isViewOnly && (
-        <BottomSheetLocation
-          ref={bottomSheetRef}
-          selectedLocation={selectedLocation}
-          onGoToUser={goToUser}
-          onCancel={navigation.goBack}
-          onBookNow={() => routingQuery.refetch()}
-        />
-      )}
+      {renderOverlay?.({
+        selectedLocation,
+        onGoToUser: goToUser,
+        onBookNow: () => routingQuery.refetch(),
+      })}
     </>
   );
 };

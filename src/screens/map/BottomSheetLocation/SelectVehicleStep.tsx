@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import { EdgeInsets } from "react-native-safe-area-context";
 import { COLORS } from "../../../assets/colors";
-import AppButton from "../../AppButton";
-import AppIcon from "../../AppIcon";
+import AppButton from "../../../components/AppButton";
+import AppIcon from "../../../components/AppIcon";
 
 import { CARS } from "../../../constants";
 import { Car } from "./types";

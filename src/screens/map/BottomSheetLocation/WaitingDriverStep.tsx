@@ -9,9 +9,9 @@ import {
 import { EdgeInsets } from "react-native-safe-area-context";
 import { COLORS } from "../../../assets/colors";
 import { getRandomArbitrary } from "../../../utils/utils";
-import AppIcon from "../../AppIcon";
-import BreakLine from "../../BreakLine";
-import CountDownText from "../../CountDownText";
+import AppIcon from "../../../components/AppIcon";
+import BreakLine from "../../../components/BreakLine";
+import CountDownText from "../../../components/CountDownText";
 import { Car, Driver } from "./types";
 
 const heightScreen = Dimensions.get("window").height;
