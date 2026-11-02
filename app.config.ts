@@ -1,6 +1,5 @@
 import "dotenv/config";
 import { ConfigContext, ExpoConfig } from "expo/config";
-import { version } from "./package.json";
 
 // Replace these with your EAS project ID and project slug.
 // You can find them at https://expo.dev/accounts/[account]/projects/[project].
@@ -27,7 +26,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   return {
     ...config,
     name: name,
-    version: '1.0.1',
+    version: "1.0.1",
     slug: PROJECT_SLUG, // Must be consistent across all environments.
     orientation: "portrait",
     userInterfaceStyle: "automatic",
@@ -66,6 +65,21 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     plugins: [
       "expo-router",
+      [
+        "expo-build-properties",
+        {
+          ios: {
+            useFrameworks: "dynamic",
+          },
+        },
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          merchantIdentifier: "merchant.identifier",
+          enableGooglePay: true,
+        },
+      ],
       [
         "expo-asset",
         {

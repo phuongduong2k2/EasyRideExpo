@@ -10,6 +10,7 @@ import {
   DefaultTheme,
   NavigationContainer,
 } from "@react-navigation/native";
+import { StripeProvider } from "@stripe/stripe-react-native";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Asset } from "expo-asset";
 import * as SplashScreen from "expo-splash-screen";
@@ -43,20 +44,41 @@ export function App() {
     return null;
   }
 
+  // Setup Stripe Payment
+  // const [publishableKey, setPublishableKey] = useState("");
+  // const fetchPublishableKey = async () => {
+  //   // const key = await fetchKey(); // fetch key from your server here
+  //   const key =
+  //     "pk_test_51UXNUmHSIopNiHrCD4ns2TEysxr4Pmc8YurDXCkg0JmCxpKMjaMdHPwO13Qw3ARLYJk7zEzvSONRDsE7sEVa6tGg00pIegzzsF";
+  //   setPublishableKey(key);
+  // };
+
+  // useEffect(() => {
+  //   fetchPublishableKey();
+  // }, []);
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <GestureHandlerRootView>
-          <BottomSheetModalProvider>
-            <NavigationContainer
-              theme={theme}
-              onReady={() => SplashScreen.hideAsync()}
-            >
-              <RootNavigation />
-            </NavigationContainer>
-          </BottomSheetModalProvider>
-        </GestureHandlerRootView>
-      </Provider>
-    </QueryClientProvider>
+    <StripeProvider
+      publishableKey={
+        "pk_test_51UXNUmHSIopNiHrCD4ns2TEysxr4Pmc8YurDXCkg0JmCxpKMjaMdHPwO13Qw3ARLYJk7zEzvSONRDsE7sEVa6tGg00pIegzzsF"
+      }
+      merchantIdentifier="merchant.identifier" // required for Apple Pay
+      urlScheme="com.easyride" // required for 3D Secure and bank redirects
+    >
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <GestureHandlerRootView>
+            <BottomSheetModalProvider>
+              <NavigationContainer
+                theme={theme}
+                onReady={() => SplashScreen.hideAsync()}
+              >
+                <RootNavigation />
+              </NavigationContainer>
+            </BottomSheetModalProvider>
+          </GestureHandlerRootView>
+        </Provider>
+      </QueryClientProvider>
+    </StripeProvider>
   );
 }

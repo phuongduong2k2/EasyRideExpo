@@ -4,7 +4,7 @@ import React, {
   useImperativeHandle,
   useRef,
 } from "react";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import MapView, {
   Callout,
   EdgePadding,
@@ -55,6 +55,14 @@ export type AppMapViewRef = {
 };
 
 const AppMapView = ({ ref, renderOverlay }: Props) => {
+  if (Platform.OS === "android") {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Do not support Android yet!</Text>
+      </View>
+    );
+  }
+
   const mapRef = useRef<MapView>(null);
   const isViewOnly = !renderOverlay;
 
