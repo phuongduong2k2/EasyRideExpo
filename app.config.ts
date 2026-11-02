@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { ConfigContext, ExpoConfig } from "expo/config";
 import { version } from "./package.json";
 
@@ -121,7 +122,7 @@ export const getDynamicAppConfig = (
       name: `${APP_NAME} Preview`,
       bundleIdentifier: `${BUNDLE_IDENTIFIER}.preview`,
       packageName: `${PACKAGE_NAME}.preview`,
-      icon: ICON,
+      icon: "./assets/images/preview_icon.png",
       adaptiveIcon: "./assets/adaptive-icon.png",
       scheme: `${SCHEME}-prev`,
     };
@@ -131,7 +132,7 @@ export const getDynamicAppConfig = (
     name: `${APP_NAME} Development`,
     bundleIdentifier: `${BUNDLE_IDENTIFIER}.dev`,
     packageName: `${PACKAGE_NAME}.dev`,
-    icon: ICON,
+    icon: "./assets/images/development_icon.png",
     adaptiveIcon: "./assets/adaptive-icon.png",
     scheme: `${SCHEME}-dev`,
   };

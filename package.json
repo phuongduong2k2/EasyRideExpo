@@ -6,7 +6,9 @@
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "env:dev": "APP_ENV=development npx expo start",
+    "env:prod": "APP_ENV=production npx expo start"
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.4.1",
@@ -19,6 +21,7 @@
     "@reduxjs/toolkit": "^2.13.0",
     "@tanstack/react-query": "^5.105.0",
     "axios": "^1.21.0",
+    "dotenv": "^18.0.9",
     "expo": "~58.0.22",
     "expo-asset": "~58.0.18",
     "expo-constants": "~58.0.14",

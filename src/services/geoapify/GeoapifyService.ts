@@ -1,4 +1,5 @@
 import { LatLng } from "react-native-maps";
+import config from "../../config";
 import { ApiService } from "../ApiService";
 import {
   ReverseGeocodingResponse,
@@ -9,7 +10,7 @@ import {
 const GEOAPIFY_BASE_URL = "https://api.geoapify.com/v1";
 
 class GeoapifyService extends ApiService {
-  private readonly apiKey = process.env.EXPO_PUBLIC_GEOAPIFY_API_KEY;
+  private readonly apiKey = config.geoapifyApiKey;
   constructor() {
     super(GEOAPIFY_BASE_URL);
   }
