@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { ConfigContext, ExpoConfig } from "expo/config";
 import { version } from "./package.json";
 
@@ -27,7 +26,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   return {
     ...config,
     name: name,
-    version, // Automatically bump your project version with `npm version patch`, `npm version minor` or `npm version major`.
+    version: '1.0.1',
     slug: PROJECT_SLUG, // Must be consistent across all environments.
     orientation: "portrait",
     userInterfaceStyle: "automatic",

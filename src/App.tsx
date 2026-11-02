@@ -21,7 +21,6 @@ import {
 } from "react-native-reanimated";
 import { Provider } from "react-redux";
 import { IMAGES } from "./assets/images";
-import { EnvironmentBanner } from "./components/EnvironmentBanner";
 import RootNavigation from "./navigation";
 import { queryClient } from "./services/queryClient";
 import { store } from "./store/store";
@@ -45,22 +44,19 @@ export function App() {
   }
 
   return (
-    <>
-      <EnvironmentBanner />
-      <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
-          <GestureHandlerRootView>
-            <BottomSheetModalProvider>
-              <NavigationContainer
-                theme={theme}
-                onReady={() => SplashScreen.hideAsync()}
-              >
-                <RootNavigation />
-              </NavigationContainer>
-            </BottomSheetModalProvider>
-          </GestureHandlerRootView>
-        </Provider>
-      </QueryClientProvider>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <GestureHandlerRootView>
+          <BottomSheetModalProvider>
+            <NavigationContainer
+              theme={theme}
+              onReady={() => SplashScreen.hideAsync()}
+            >
+              <RootNavigation />
+            </NavigationContainer>
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
+      </Provider>
+    </QueryClientProvider>
   );
 }

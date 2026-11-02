@@ -1,14 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { Text, View } from "react-native";
 
-type Props = {}
+type Props = {};
 
 const ProfileTab = (props: Props) => {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Text>ProfileTab</Text>
     </View>
-  )
-}
+  );
+};
 
-export default ProfileTab
+export default ProfileTab;
