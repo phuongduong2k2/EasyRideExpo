@@ -1,65 +1,86 @@
-# Starter Template with React Navigation
+# EasyRide
 
-This is a minimal starter template for React Native apps using Expo and React Navigation.
+EasyRide is a ride-hailing app built with Expo / React Native, inspired by apps like Grab/Uber. This repo is still in development: the map and ride-booking flow already work, while some other tabs/features are still placeholders.
 
-It includes the following:
+## Demo
 
-- Example [Native Stack](https://reactnavigation.org/docs/native-stack-navigator) with a nested [Native Bottom Tab](https://reactnavigation.org/docs/native-bottom-tab-navigator) (falls back to [Bottom Tab](https://reactnavigation.org/docs/bottom-tab-navigator) on web)
-- Web support with [React Native for Web](https://necolas.github.io/react-native-web/)
-- TypeScript support and configured for React Navigation
-- Automatic [deep link](https://reactnavigation.org/docs/deep-linking) and [URL handling configuration](https://reactnavigation.org/docs/configuring-links)
-- Theme support [based on system appearance](https://reactnavigation.org/docs/themes/#using-the-operating-system-preferences)
-- Expo [Development Build](https://docs.expo.dev/develop/development-builds/introduction/) with [Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)
+<!--
+  Replace the link below with the real demo video (YouTube, Google Drive, or a GitHub-hosted asset
+  link obtained by dragging the video into an issue/PR). The original .mov file should not be
+  committed directly to the repo since it's too large.
+-->
+
+[![EasyRide demo](./assets/images/welcome.png)](https://drive.google.com/file/d/1w-k0JmjZGW4F6yQqOSHESXVXt73ao0hH/view?usp=drive_link)
+
+> 🎥 Click the image above to watch the demo video (link to be updated).
+
+## Key Features
+
+### Onboarding & Authentication
+- Onboarding screen with a 3-slide carousel, including skip/next buttons.
+- Authentication screen with a "Continue with Google" button — currently it only requests location permission and moves into the app, without real Google OAuth integration yet.
+
+### Map & Ride Booking (main flow)
+- Interactive map using `react-native-maps`, showing the user's location and letting them pick a destination pin.
+- Reverse geocoding (address from coordinates) and routing (drawing the route) via the Geoapify API.
+- Multi-step bottom sheet (`@gorhom/bottom-sheet`): pick pickup/destination → select vehicle type → confirm → wait for driver.
+- Vehicle selection from a sample vehicle list (static data, no real pricing/backend yet).
+- Waiting-for-driver screen with a countdown, call/message buttons (UI only, not yet wired to any action), and trip cancellation.
+- Toggle between "ride" and "delivery" modes on Home — the delivery mode doesn't have its own flow yet.
+
+### Location Search
+- The Search screen and the "recent places" list (Redux) already have the UI scaffolding in place, waiting to be connected to real search functionality (a Mapbox geocoding service is already written but not yet called from the UI).
+
+### Bottom Navigation Tabs
+- **Home**: the map/ride-booking flow described above.
+- **Favourite**, **Wallet**: placeholders, not yet implemented.
+- **Offer**: currently a sensor demo screen (magnetometer), not an actual offers screen yet.
+- **Profile**: Stripe (Payment Sheet) payment scaffolding — the SDK is installed and a test UI is built, but the server-side payment intent creation is still temporary, so payments aren't fully functional yet.
+
+## Tech Stack
+
+- **Framework**: Expo + React Native
+- **Navigation**: React Navigation (native stack + bottom tabs)
+- **State management**: Redux Toolkit + TanStack React Query (data fetching) + React Context (ride-booking flow state)
+- **Maps & location**: `react-native-maps`, `expo-location`, Geoapify (geocoding + routing)
+- **Payments**: `@stripe/stripe-react-native` Stripe React Native SDK (currently in sandbox/test stage)
+- **UI**: `@gorhom/bottom-sheet`, custom SVG icons, Poppins font (`@expo-google-fonts`)
 
 ## Getting Started
 
-1. Create a new project using this template:
+Install dependencies:
 
-   ```sh
-   npx create-expo-app@latest --template react-navigation/template
-   ```
+```bash
+npm install
+```
 
-2. Edit the `app.json` file to configure the `name`, `slug`, `scheme` and bundle identifiers (`ios.bundleIdentifier` and `android.bundleIdentifier`) for your app.
+Run a development build:
 
-3. Edit the `src/App.tsx` file to start working on your app.
+```bash
+npm run ios
+# or
+npm run android
+```
 
-## Running the app
+Once the build finishes, start the dev server:
 
-- Install the dependencies:
+```bash
+npm start
+```
 
-  ```sh
-  npm install
-  ```
+> This app uses a development build (it has native code such as `react-native-maps` and `stripe-react-native`), so it **cannot run with Expo Go**.
 
-- Start the development server:
+### Environment Variables
 
-  ```sh
-  npm start
-  ```
+Create a `.env.local` file (see `.env.local.example`) with the required keys (Geoapify API key, Stripe publishable key, etc.) before running the app.
 
-- Build and run iOS and Android development builds:
+## Scripts
 
-  ```sh
-  npm run ios
-  # or
-  npm run android
-  ```
-
-- In the terminal running the development server, press `i` to open the iOS simulator, `a` to open the Android device or emulator, or `w` to open the web browser.
-
-## Notes
-
-This project uses a [development build](https://docs.expo.dev/develop/development-builds/introduction/) and cannot be run with [Expo Go](https://expo.dev/go). To run the app with Expo Go, edit the `package.json` file, remove the `expo-dev-client` package and `--dev-client` flag from the `start` script.
-
-We highly recommend using the development builds for normal development and testing.
-
-The `ios` and `android` folder are gitignored in the project by default as they are automatically generated during the build process ([Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)). This means that you should not edit these folders directly and use [config plugins](https://docs.expo.dev/config-plugins/) instead. However, if you need to edit these folders, you can remove them from the `.gitignore` file so that they are tracked by git.
-
-## Resources
-
-- [React Navigation documentation](https://reactnavigation.org/)
-- [Expo documentation](https://docs.expo.dev/)
+```bash
+npm run lint      # run eslint
+npx tsc --noEmit  # typecheck
+```
 
 ---
 
-Demo assets are from [lucide.dev](https://lucide.dev/)
+Original demo assets from [lucide.dev](https://lucide.dev/)
