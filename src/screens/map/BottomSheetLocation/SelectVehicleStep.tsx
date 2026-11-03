@@ -1,6 +1,5 @@
 import { Image } from "expo-image";
 import {
-  Dimensions,
   FlatList,
   StyleSheet,
   Text,
@@ -12,10 +11,8 @@ import { COLORS } from "../../../assets/colors";
 import AppButton from "../../../components/AppButton";
 import AppIcon from "../../../components/AppIcon";
 
-import { CARS } from "../../../constants";
+import { CARS, DIMENTIONS } from "../../../constants";
 import { Car } from "./types";
-
-const heightScreen = Dimensions.get("window").height;
 
 const ItemSeparatorComponent = () => <View style={styles.separator} />;
 
@@ -36,7 +33,10 @@ const SelectVehicleStep = ({
 }: Props) => {
   return (
     <View
-      style={[styles.container, { height: heightScreen * 0.5 - insets.top }]}
+      style={[
+        styles.container,
+        { height: DIMENTIONS.height * 0.5 - insets.top },
+      ]}
     >
       <FlatList
         data={CARS}

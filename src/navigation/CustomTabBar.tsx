@@ -1,10 +1,11 @@
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { COLORS } from "../assets/colors";
 import { IconName } from "../assets/icons";
 import AppIcon from "../components/AppIcon";
+import { DIMENTIONS } from "../constants";
 import { BottomTabParamList } from "./types";
 
 export const HEXAGON_SIZE = 90;
@@ -22,8 +23,6 @@ const TAB_ICONS: Record<keyof BottomTabParamList, TabIcons> = {
   Profile: { outline: "user", fill: "user_fill" },
 };
 
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
-
 const CustomTabBar = ({
   state,
   descriptors,
@@ -32,7 +31,7 @@ const CustomTabBar = ({
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={[styles.container, { width: SCREEN_WIDTH }]}>
+    <View style={[styles.container, { width: DIMENTIONS.width }]}>
       <View style={[styles.panel, { paddingBottom: insets.bottom }]}>
         {state.routes.map((route, index) => {
           const name = route.name as keyof BottomTabParamList;

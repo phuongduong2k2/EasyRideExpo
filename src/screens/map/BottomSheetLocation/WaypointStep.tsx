@@ -2,7 +2,6 @@ import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import {
   ActivityIndicator,
-  Dimensions,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -11,6 +10,7 @@ import {
 import { EdgeInsets } from "react-native-safe-area-context";
 import { COLORS } from "../../../assets/colors";
 import { IMAGES } from "../../../assets/images";
+import { DIMENTIONS } from "../../../constants";
 import { ReverseGeocodingResponse } from "../../../services/geoapify/types";
 import { Step } from "./types";
 
@@ -21,8 +21,6 @@ type Props = {
   insets: EdgeInsets;
   data?: ReverseGeocodingResponse;
 };
-
-const heightScreen = Dimensions.get("window").height;
 
 export const NoWaypointSelected = () => (
   <View style={styles.emptyContainer}>
@@ -45,7 +43,7 @@ const WaypointStep = ({
   return (
     <View
       style={{
-        height: heightScreen * 0.2 - insets.top,
+        height: DIMENTIONS.height * 0.2 - insets.top,
         justifyContent: "center",
       }}
     >

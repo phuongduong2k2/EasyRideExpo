@@ -1,3 +1,4 @@
+import { Dimensions } from "react-native";
 import { IMAGES } from "../assets/images";
 import { Car } from "../screens/map/BottomSheetLocation/types";
 
@@ -73,3 +74,5 @@ export const CARS: Car[] = [
     carIcon: "car3",
   },
 ];
+
+export const DIMENTIONS = Dimensions.get("window");

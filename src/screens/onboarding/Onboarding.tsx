@@ -1,7 +1,6 @@
 import { Image } from "expo-image";
 import { useRef, useState } from "react";
 import {
-  Dimensions,
   FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -13,10 +12,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { COLORS } from "../../assets/colors";
+import { DIMENTIONS } from "../../constants";
 import { StackNavigationProp } from "../../navigation/types";
 import { ONBOARDING_SLIDES, OnboardingSlide } from "./onboarding-slides";
 
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
 type Props = StackNavigationProp<"Onboarding">;
 
 const Onboarding = ({ navigation }: Props) => {
@@ -26,7 +25,9 @@ const Onboarding = ({ navigation }: Props) => {
   const isLastSlide = activeIndex === ONBOARDING_SLIDES.length - 1;
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const index = Math.round(event.nativeEvent.contentOffset.x / SCREEN_WIDTH);
+    const index = Math.round(
+      event.nativeEvent.contentOffset.x / DIMENTIONS.width,
+    );
     setActiveIndex(index);
   };
 
@@ -69,12 +70,12 @@ const Onboarding = ({ navigation }: Props) => {
           onScroll={handleScroll}
           scrollEventThrottle={16}
           getItemLayout={(_, index) => ({
-            length: SCREEN_WIDTH,
-            offset: SCREEN_WIDTH * index,
+            length: DIMENTIONS.width,
+            offset: DIMENTIONS.width * index,
             index,
           })}
           renderItem={({ item }) => (
-            <View style={[styles.slide, { width: SCREEN_WIDTH }]}>
+            <View style={[styles.slide, { width: DIMENTIONS.width }]}>
               <Image
                 source={item.image}
                 style={styles.illustration}

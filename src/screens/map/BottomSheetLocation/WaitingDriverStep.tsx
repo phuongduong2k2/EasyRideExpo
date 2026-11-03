@@ -1,21 +1,14 @@
 import { Image } from "expo-image";
 import { useState } from "react";
-import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { EdgeInsets } from "react-native-safe-area-context";
 import { COLORS } from "../../../assets/colors";
 import AppIcon from "../../../components/AppIcon";
 import BreakLine from "../../../components/BreakLine";
 import CountDownText from "../../../components/CountDownText";
+import { DIMENTIONS } from "../../../constants";
 import { getRandomArbitrary } from "../../../utils/utils";
 import { Car, Driver } from "./types";
-
-const heightScreen = Dimensions.get("window").height;
 
 type Props = {
   insets: EdgeInsets;
@@ -40,7 +33,10 @@ const WaitingDriverStep = ({
 
   return (
     <View
-      style={[styles.container, { height: heightScreen * 0.4 - insets.top }]}
+      style={[
+        styles.container,
+        { height: DIMENTIONS.height * 0.4 - insets.top },
+      ]}
     >
       {isArrived ? (
         <Text style={styles.etaText}>

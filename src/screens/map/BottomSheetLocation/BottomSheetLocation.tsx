@@ -14,6 +14,7 @@ import AppButton from "../../../components/AppButton";
 import AppIcon from "../../../components/AppIcon";
 import { geoapifyService } from "../../../services/geoapify/GeoapifyService";
 
+import { DIMENTIONS } from "../../../constants";
 import { MapContext } from "../../../context/mapContext";
 import { RoutingResponse } from "../../../services/geoapify/types";
 import SelectVehicleStep from "./SelectVehicleStep";
@@ -111,7 +112,12 @@ const BottomSheetLocation = ({
         );
       case Step.ConfirmStart:
         return (
-          <View>
+          <View
+            style={{
+              height: DIMENTIONS.height * 0.2 - insets.top,
+              justifyContent: "center",
+            }}
+          >
             <AppButton
               isLoading={isConfirming}
               onPress={async () => {
@@ -132,7 +138,9 @@ const BottomSheetLocation = ({
                 setIsConfirming(false);
               }}
             >
-              <Text>Let's Start</Text>
+              <Text style={{ color: "white", fontSize: 20, fontWeight: "600" }}>
+                Let's Start
+              </Text>
             </AppButton>
           </View>
         );
