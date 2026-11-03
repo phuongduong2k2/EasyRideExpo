@@ -10,8 +10,12 @@ EasyRide is a ride-hailing app built with Expo / React Native, inspired by apps 
   committed directly to the repo since it's too large.
 -->
 
-[![EasyRide demo](<img width="1206" height="2622" alt="image" src="https://github.com/user-attachments/assets/8af80ec2-5a68-4f58-b0c0-14dbd11b6eeb" />
-)](https://drive.google.com/file/d/1w-k0JmjZGW4F6yQqOSHESXVXt73ao0hH/view?usp=drive_link)
+<a href="https://drive.google.com/file/d/1w-k0JmjZGW4F6yQqOSHESXVXt73ao0hH/view?usp=drive_link">
+  <img width="200" alt="1" src="https://github.com/user-attachments/assets/4368f9b4-7e19-46c0-ae7e-0a995bdd047d" />
+  <img width="200" alt="2" src="https://github.com/user-attachments/assets/846839ac-03a5-4e81-9e8d-c9d5a6c2913d" />
+  <img src="https://github.com/user-attachments/assets/33dbd545-299c-48c6-b8ee-776213ef9da6" alt="3 demo" width="200">
+  <img width="200" alt="4" src="https://github.com/user-attachments/assets/1bf453ec-907b-40fe-b336-09c9a61c4fac" />
+</a>
 
 > 🎥 Click the image above to watch the demo video (link to be updated).
 
