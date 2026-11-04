@@ -6,15 +6,19 @@ import {
 } from "@stripe/stripe-react-native";
 import { useCallback, useEffect } from "react";
 import { Button, Linking, Text, View } from "react-native";
+import { useInitialURL } from "../../hooks/useInitialURL";
 
 type Props = {};
 
 const ProfileTab = (props: Props) => {
   const { handleURLCallback } = useStripe();
+  const { url: initialUrl, processing } = useInitialURL();
 
   const handleDeepLink = useCallback(
     async (url: string | null) => {
       if (url) {
+        console.log(url);
+
         const stripeHandled = await handleURLCallback(url);
         if (stripeHandled) {
           // This was a Stripe URL - you can return or add extra handling here as you see fit
@@ -51,13 +55,19 @@ const ProfileTab = (props: Props) => {
   const initializePaymentSheet = async () => {
     const { error } = await initPaymentSheet({
       merchantDisplayName: "Example, Inc.",
-      returnURL: "com.easyride://stripe-redirect",
+      returnURL: "com.easyride.dev://stripe-redirect",
       intentConfiguration: {
         mode: {
           amount: 1099,
           currencyCode: "USD",
         },
         confirmationTokenConfirmHandler: confirmHandler,
+      },
+      applePay: {
+        merchantCountryCode: "US",
+      },
+      googlePay: {
+        merchantCountryCode: "US",
       },
     });
     if (error) {
@@ -73,31 +83,33 @@ const ProfileTab = (props: Props) => {
     confirmationToken: Result,
     intentCreationCallback: (params: IntentCreationCallbackParams) => void,
   ) => {
-    console.log({
-      confirmationToken,
-    });
-
-    // // Make a request to your own server to create a PaymentIntent and return its client secret
-    // const response = await fetch(`${API_URL}/create-intent`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     confirmation_token_id: confirmationToken.id,
-    //   }),
-    // });
-    // // Call the `intentCreationCallback` with your server response's client secret or error
-    // const { client_secret, error } = await response.json();
-    // if (client_secret) {
-    //   intentCreationCallback({clientSecret: client_secret});
-    // } else {
-    //   intentCreationCallback({
-    //     error: {
-    //       localizedMessage: error.localizedMessage || 'An error occurred',
-    //     },
-    //   });
-    // }
+    // Make a request to your own server to create a PaymentIntent and return its client secret
+    const response = await fetch(
+      `http://localhost:3000/create-confirm-intent`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          confirmation_token_id: confirmationToken.id,
+        }),
+      },
+    );
+    // Call the `intentCreationCallback` with your server response's client secret or error
+    const { client_secret, error } = await response.json();
+    console.log({ client_secret, error });
+    if (client_secret) {
+      intentCreationCallback({ clientSecret: client_secret });
+    } else {
+      intentCreationCallback({
+        error: {
+          code: "Failed",
+          message: "Pheo",
+          localizedMessage: error.localizedMessage || "An error occurred",
+        },
+      });
+    }
   };
 
   const didTapCheckoutButton = async () => {
@@ -115,8 +127,13 @@ const ProfileTab = (props: Props) => {
   };
 
   return (
-    <View style={{ flex: 1, paddingTop: 300 }}>
+    <View style={{ flex: 1, paddingTop: 300, alignItems: "center" }}>
       <Text>ProfileTab</Text>
+      <Text>
+        {processing
+          ? "Processing the initial url from a deep link"
+          : `The deep link is: ${initialUrl || "None"}`}
+      </Text>
       <Button title="Purchase" onPress={didTapCheckoutButton} />
     </View>
   );
