@@ -3,6 +3,7 @@ import { Button, Text, View } from "react-native";
 import { useEffect } from "react";
 import ExpoPaymentModule from "../../../modules/expo-payment/src/ExpoPaymentModule";
 import NativeAddPassButton from "../../../modules/expo-payment/src/NativeAddPassButton";
+import PaymentButton from "../../../modules/expo-payment/src/PaymentButton";
 
 type Props = {};
 
@@ -36,6 +37,10 @@ const ProfileTab = (props: Props) => {
             console.log(error);
           }
         }}
+      />
+      <PaymentButton
+        style={{ width: 285, height: 43 }}
+        onButtonPress={() => ExpoPaymentModule.setupPayment()}
       />
       <Button
         title="test"

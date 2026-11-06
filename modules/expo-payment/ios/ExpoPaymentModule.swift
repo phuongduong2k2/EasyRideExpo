@@ -6,6 +6,10 @@ public class ExpoPaymentModule: Module {
     private let network = Network()
     private let pkPassLib = PKPassLibrary()
     
+    private func getCurrentVC() -> UIViewController? {
+        return self.appContext?.utilities?.currentViewController()
+    }
+    
     public func definition() -> ModuleDefinition {
         Name("ExpoPayment")
         
@@ -20,7 +24,7 @@ public class ExpoPaymentModule: Module {
             print("withPassTypeIdentifier: \(pkPass.passTypeIdentifier),serialNumber: \(pkPass.serialNumber)")
 
             return try await MainActor.run {
-                guard let currentVC = self.appContext?.utilities?.currentViewController(),
+                guard let currentVC = self.getCurrentVC(),
                       let addPassVC = PKAddPassesViewController(pass: pkPass) else {
                     throw Exception(name: "PRESENT_FAILED", description: "Something wrong")
                 }
@@ -42,6 +46,10 @@ public class ExpoPaymentModule: Module {
             Events("onButtonPress")
         }
         
+        View(PaymentButton.self) {
+            Events("onButtonPress")
+        }
+        
         Function("isPassExist") {() -> Bool in
             let passes = pkPassLib.passes()
             print(passes)
@@ -49,6 +57,27 @@ public class ExpoPaymentModule: Module {
                 return false
             }
             return true
+        }
+        
+        AsyncFunction("setupPayment") {() -> Void in
+            return await MainActor.run {
+                guard let currentVC = self.getCurrentVC() else {
+                    return
+                }
+                let cookieItem = PKPaymentSummaryItem(label: "cookie", amount: 100)
+                let milkItem = PKPaymentSummaryItem(label: "milk", amount: 120)
+                let paymentRequest = PKPaymentRequest()
+                paymentRequest.countryCode = "VN"
+                paymentRequest.currencyCode = "VND"
+                paymentRequest.merchantIdentifier = "merchaint"
+                paymentRequest.paymentSummaryItems = [cookieItem, milkItem]
+                paymentRequest.supportedNetworks = [.visa,.masterCard]
+                guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest) else {
+                    return
+                }
+                
+                currentVC.present(paymentVC, animated: true)
+            }
         }
     }
 }

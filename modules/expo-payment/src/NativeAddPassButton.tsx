@@ -7,7 +7,10 @@ export type Props = {
   onButtonPress?: () => void;
 };
 
-const NativeView: React.ComponentType<Props> = requireNativeView("ExpoPayment");
+const NativeView: React.ComponentType<Props> = requireNativeView(
+  "ExpoPayment",
+  "AddPassButtonView",
+);
 
 const NativeAddPassButton = (props: Props) => {
   return <NativeView {...props} />;
