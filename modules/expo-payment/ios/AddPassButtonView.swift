@@ -13,8 +13,7 @@ class AddPassButtonView: ExpoView {
     let addPassBtn = PKAddPassButton()
     let network = Network()
     
-    let onDone = EventDispatcher()
-    let onFailed = EventDispatcher()
+    let onButtonPress = EventDispatcher()
     
     required init(appContext: AppContext? = nil) {
         super.init(appContext: appContext)
@@ -27,39 +26,6 @@ class AddPassButtonView: ExpoView {
     }
     
     @objc private func addPass() {
-        Task {
-            do {
-                guard let data = try await network.fetchLoyaltyPass() else {
-                    return onFailed([
-                        "message": "Bad data"
-                    ])
-                }
-                
-                let pkPass = try PKPass(data: data)
-                
-                await MainActor.run {
-                    guard let currentVC = self.appContext?.utilities?.currentViewController() else {
-                        return onFailed([
-                            "message": "Current VC not found"
-                        ])
-                    }
-                    
-                    guard let addPassVC = PKAddPassesViewController(pass: pkPass) else {
-                        return onFailed([
-                            "message": "Create add pass VC failed"
-                        ])
-                    }
-                    
-                    currentVC.present(addPassVC, animated: true)
-                    onDone([
-                        "message": "Done"
-                    ])
-                }
-            } catch {
-                onFailed([
-                    "message": error.localizedDescription
-                ])
-            }
-        }
+        onButtonPress()
     }
 }

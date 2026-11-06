@@ -1,27 +1,45 @@
 import { Button, Text, View } from "react-native";
 
+import { useEffect } from "react";
 import ExpoPaymentModule from "../../../modules/expo-payment/src/ExpoPaymentModule";
 import NativeAddPassButton from "../../../modules/expo-payment/src/NativeAddPassButton";
 
 type Props = {};
 
 const ProfileTab = (props: Props) => {
+  useEffect(() => {
+    const subscription = ExpoPaymentModule.addListener(
+      "addPassDidFinish",
+      ({ status }) => {
+        console.log("Expo: ", status);
+      },
+    );
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>ProfileTab</Text>
-      <Button
-        title="Add Card"
-        onPress={() =>
-          ExpoPaymentModule.presentSheet().then(() => console.log("done"))
-        }
-      />
+      <Text>ProfileTab {String(ExpoPaymentModule.isPassExist())}</Text>
+
       <NativeAddPassButton
         style={{
-          width: 285, // Chiều rộng tiêu chuẩn Apple khuyên dùng
-          height: 43, // Chiều cao tiêu chuẩn
+          width: 285,
+          height: 43,
         }}
-        onDone={(event) => console.log(event.nativeEvent.message)}
-        onFailed={(event) => console.log(event.nativeEvent.message)}
+        onButtonPress={async () => {
+          try {
+            await ExpoPaymentModule.displayPass();
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      />
+      <Button
+        title="test"
+        onPress={() => console.log(ExpoPaymentModule.isPassExist())}
       />
     </View>
   );

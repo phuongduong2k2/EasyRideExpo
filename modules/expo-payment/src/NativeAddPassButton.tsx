@@ -4,8 +4,7 @@ import { StyleProp, ViewStyle } from "react-native";
 
 export type Props = {
   style?: StyleProp<ViewStyle>;
-  onDone?: (event: { nativeEvent: { message: string } }) => void;
-  onFailed?: (event: { nativeEvent: { message: string } }) => void;
+  onButtonPress?: () => void;
 };
 
 const NativeView: React.ComponentType<Props> = requireNativeView("ExpoPayment");

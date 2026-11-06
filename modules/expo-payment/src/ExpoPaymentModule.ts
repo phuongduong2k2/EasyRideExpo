@@ -1,7 +1,12 @@
 import { NativeModule, requireNativeModule } from "expo";
 
-declare class ExpoPaymentModule extends NativeModule {
-  presentSheet(): Promise<void>;
+export type PassEvents = {
+  addPassDidFinish: (params: { status: boolean }) => void;
+};
+declare class ExpoPaymentModule extends NativeModule<PassEvents> {
+  displayPass(): Promise<string>;
+  addPassDidFinish(event: { status: boolean }): void;
+  isPassExist(): boolean;
 }
 
 export default requireNativeModule<ExpoPaymentModule>("ExpoPayment");
